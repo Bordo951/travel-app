@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MapOfCountry: React.FC = () => {
+const Map: React.FC = () => {
   return (
     <div>MapOfCountry</div>
   )
 }
 
-export default MapOfCountry;
+export default Map;

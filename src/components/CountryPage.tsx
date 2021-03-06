@@ -1,21 +1,24 @@
 import React from 'react';
-import PhotogalleryOfCountry from './countryPage/PhotogalleryOfCountry';
-import VideoOfCountry from './countryPage/VideoOfCountry';
-import MapOfCountry from './countryPage/MapOfCountry';
+import Photogallery from './countryPage/Photogallery';
+import VideoCountry from './countryPage/VideoCountry';
+import Map from './countryPage/Map';
 import Widgets from './countryPage/Widgets';
+
 
 const CountryPage: React.FC = () => {
   return (
     <div>
-      <div>Country Page</div>
+      {/* <header>
+        <h1>header</h1>
+      </header> */}
       <div>
-        <PhotogalleryOfCountry />
+        <Photogallery />
       </div>
       <div>
-        <VideoOfCountry />
+        <VideoCountry />
       </div>
       <div>
-        <MapOfCountry />
+        <Map />
       </div>
       <div>
         <Widgets />

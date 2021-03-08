@@ -5,7 +5,6 @@ import { Player } from 'video-react';
 const VideoOfCountry: React.FC = () => {
   return (
     <div>
-      VideoOfCountry
       <Player // выдает warning
       playsInline
       poster="/assets/poster.png"

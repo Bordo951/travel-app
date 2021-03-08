@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import InfoCountry from './countryPage/InfoCountry';
 import Photogallery from './countryPage/Photogallery';
 import VideoCountry from './countryPage/VideoCountry';
@@ -6,7 +6,7 @@ import Map from './countryPage/Map';
 import Widgets from './countryPage/Widgets';
 
 import styled from 'styled-components';
-
+import '../fonts/fonts.css'
 
 const CountryPage__intro = styled.div`
   width: 100%;
@@ -19,7 +19,11 @@ const CountryPage__intro = styled.div`
 `; 
 
 
+
+
 const CountryPage: React.FC = () => {
+
+ 
   return (
     <div>
         <CountryPage__intro>

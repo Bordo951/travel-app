@@ -1,13 +1,14 @@
-import React from 'react';
-import CountryPage from './components/CountryPage';
+import React from "react";
+import CountryPage from "./components/CountryPage";
 
-import { createGlobalStyle } from 'styled-components';
-import './fonts/fonts.css'
+import { createGlobalStyle } from "styled-components";
+import "./fonts/fonts.css";
 
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
   body {
     font-family: 'Montserrat-Regular',sans-serif;
@@ -16,16 +17,15 @@ const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6 {
     line-height: 1.75;
   }
-`
-
+`;
 
 const App: React.FC = () => {
   return (
     <div>
-        <GlobalStyle />
-        <CountryPage /> 
+      <GlobalStyle />
+      <CountryPage />
     </div>
-  )
-}
+  );
+};
 
 export default App;

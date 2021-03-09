@@ -67,8 +67,7 @@ export const fetchCountryData = (id: string) => async (
   dispatch: AppDispatch,
   getState: () => AppState
 ) => {
-  console.log(getState());
-  const url = `https://travel-app-demo.herokuapp.com/countries/${id}`;
+  const url = `https://vhoreho-task-travel-app.herokuapp.com/countries/${id}`;
   dispatch(setRequestStatus("loading"));
   try {
     const { data } = await axios.get(url);
@@ -114,4 +113,5 @@ export const getCountryInfo = (state: AppState) => state.country.entity?.descrip
 export const getImageUrl = (state: AppState) => state.country.entity?.imageUrl;
 export const getvideoUrl = (state: AppState) => state.country.entity?.videoUrl;
 export const getCapitalCoordinates = (state: AppState) => state.country.entity?.capitalCoordinates;
+export const getIsoCode = (state: AppState) => state.country.entity?.ISOCode;
 export const getPlaces = (state: AppState) => state.country.entity?.places;

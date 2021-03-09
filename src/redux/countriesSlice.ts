@@ -59,7 +59,7 @@ export const countriesReducer = (
 
 //thunks
 export const fetchCountriesData = () => async (dispatch: AppDispatch, getState: () => AppState) => {
-  const url = "https://travel-app-demo.herokuapp.com/countries";
+  const url = "https://vhoreho-task-travel-app.herokuapp.com/countries";
   dispatch(setRequestStatus("loading"));
   try {
     const { data } = await axios.get<CountryType[]>(url);

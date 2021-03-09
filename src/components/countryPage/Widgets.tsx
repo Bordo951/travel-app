@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import WeatherWidget from './widgets/WeatherWidget';
-import CurrencyWidget from './widgets/CurrencyWidget';
-import DateAndTimeWidget from './widgets/DateAndTimeWidget';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import WeatherWidget from "./widgets/WeatherWidget";
+import CurrencyWidget from "./widgets/CurrencyWidget";
+import DateAndTimeWidget from "./widgets/DateAndTimeWidget";
+import styled from "styled-components";
 
-const WidgetsItems = styled.div<{ widgetsVisibility: boolean }>`
-  position: fixed;
+const WidgetsItems = styled.div<{ visible: boolean }>`
+  /* position: fixed;
   top: calc(40vh + 150px);
-  right: 0;
+  right: 0; */
   width: 260px;
+  margin-left: 10px;
   transition: all 0.5s ease;
-  ${(props) =>
-    props.widgetsVisibility ? 'margin-right: 0;' : 'margin-right: -260px;'}
+  /* ${(props) => (props.visible ? "margin-right: 0;" : "margin-right: -260px;")} */
 `;
+// eslint-disable-next-line
 const WidgetsShowBtn = styled.button`
   width: 32px;
   height: 70px;
@@ -41,31 +42,30 @@ const WidgetsItem = styled.div`
     font-size: 45px;
   }
 `;
-// style={widgetsVisibility ? ({marginRight: '0'}) : ({marginRight: '-260px'})}
+
 const Widgets: React.FC = () => {
+  // eslint-disable-next-line
   const [widgetsVisibility, setWidgetsVisibility] = useState<boolean>(false);
   return (
     <div>
-      <WidgetsItems widgetsVisibility={widgetsVisibility}>
-        <WidgetsShowBtn
-          onClick={() => setWidgetsVisibility(!widgetsVisibility)}
-        >
+      <WidgetsItems visible={widgetsVisibility}>
+        {/* <WidgetsShowBtn onClick={() => setWidgetsVisibility(!widgetsVisibility)}>
           {widgetsVisibility ? (
-            <i className='fas fa-chevron-right'></i>
+            <i className="fas fa-chevron-right"></i>
           ) : (
-            <i className='fas fa-chevron-left'></i>
+            <i className="fas fa-chevron-left"></i>
           )}
-        </WidgetsShowBtn>
+        </WidgetsShowBtn> */}
         <WidgetsItem>
-          <i className='fas fa-cloud-sun'></i>
+          <i className="fas fa-cloud-sun"></i>
           <WeatherWidget />
         </WidgetsItem>
         <WidgetsItem>
-          <i className='fas fa-euro-sign'></i>
+          <i className="fas fa-euro-sign"></i>
           <CurrencyWidget />
         </WidgetsItem>
         <WidgetsItem>
-          <i className='fas fa-calendar-alt'></i>
+          <i className="fas fa-calendar-alt"></i>
           <DateAndTimeWidget />
         </WidgetsItem>
       </WidgetsItems>

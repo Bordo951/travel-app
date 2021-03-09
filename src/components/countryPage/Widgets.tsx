@@ -1,66 +1,76 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import WeatherWidget from './widgets/WeatherWidget';
 import CurrencyWidget from './widgets/CurrencyWidget';
 import DateAndTimeWidget from './widgets/DateAndTimeWidget';
 import styled from 'styled-components';
 
-
-const Widgets__items = styled.div `
+const WidgetsItems = styled.div<{ widgetsVisibility: boolean }>`
   position: fixed;
   top: calc(40vh + 150px);
   right: 0;
   width: 260px;
-  transition: all .5s ease;
-  button {
-    width: 50px;
-    margin-left: -50px;
-    cursor: pointer;
-    font-size: 40px;
-    .fas {
-      pointer-events: none;
-    }
+  transition: all 0.5s ease;
+  ${(props) =>
+    props.widgetsVisibility ? 'margin-right: 0;' : 'margin-right: -260px;'}
+`;
+const WidgetsShowBtn = styled.button`
+  width: 32px;
+  height: 70px;
+  margin-left: -32px;
+  cursor: pointer;
+  font-size: 40px;
+  transition: color 0.2s ease;
+  color: #333333;
+  background-color: #ececec;
+  .fas {
+    color: inherit;
   }
-  div {
-    display: flex;
+  &:hover {
+    color: #fff;
+    background-color: #df5900;
   }
-
-`
-const Widgets__item = styled.div `
+  &:focus {
+    outline: 2px solid #979797;
+    outline-offset: -2px;
+  }
+`;
+const WidgetsItem = styled.div`
   background-color: red;
   margin-bottom: 30px;
   .fas {
     font-size: 45px;
   }
-  
-`
-
-
-
-const Widgets: React.FC = (props) => {
+`;
+// style={widgetsVisibility ? ({marginRight: '0'}) : ({marginRight: '-260px'})}
+const Widgets: React.FC = () => {
   const [widgetsVisibility, setWidgetsVisibility] = useState<boolean>(false);
   return (
     <div>
-      <Widgets__items style={widgetsVisibility ? ({marginRight: '-260px'}) : ({marginRight: '0'})}>
-        <button onClick={() => setWidgetsVisibility(!widgetsVisibility)}>
-          {widgetsVisibility ? (<i className="fas fa-chevron-right"></i>) : (<i className="fas fa-chevron-left"></i>)}
-        </button>
-        <Widgets__item>
-          <i className="fas fa-cloud-sun"></i>
-            <WeatherWidget />
-        </Widgets__item>
-        <Widgets__item>
-          <i className="fas fa-euro-sign"></i>
-            <CurrencyWidget />
-        </Widgets__item>
-        <Widgets__item>
-            <i className="fas fa-calendar-alt"></i>
-            <DateAndTimeWidget />
-        </Widgets__item>
-      </Widgets__items>
-      
+      <WidgetsItems widgetsVisibility={widgetsVisibility}>
+        <WidgetsShowBtn
+          onClick={() => setWidgetsVisibility(!widgetsVisibility)}
+        >
+          {widgetsVisibility ? (
+            <i className='fas fa-chevron-right'></i>
+          ) : (
+            <i className='fas fa-chevron-left'></i>
+          )}
+        </WidgetsShowBtn>
+        <WidgetsItem>
+          <i className='fas fa-cloud-sun'></i>
+          <WeatherWidget />
+        </WidgetsItem>
+        <WidgetsItem>
+          <i className='fas fa-euro-sign'></i>
+          <CurrencyWidget />
+        </WidgetsItem>
+        <WidgetsItem>
+          <i className='fas fa-calendar-alt'></i>
+          <DateAndTimeWidget />
+        </WidgetsItem>
+      </WidgetsItems>
     </div>
-    
-  )
-}
+  );
+};
 
 export default Widgets;

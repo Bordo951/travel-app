@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './components/Header';
 import CountryPage from './components/CountryPage';
 
 import { createGlobalStyle } from 'styled-components';
@@ -24,7 +23,6 @@ const App: React.FC = () => {
   return (
     <div>
         <GlobalStyle />
-        <Header />
         <CountryPage /> 
     </div>
   )

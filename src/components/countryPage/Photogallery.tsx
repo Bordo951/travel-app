@@ -20,7 +20,6 @@ const photogalery = [
 const PhotogalleryOfCountry: React.FC = () => {
   return (
     <div>
-      React Image gallery
       <ImageGallery items={photogalery} />
     </div>
   )

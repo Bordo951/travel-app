@@ -4,23 +4,32 @@ import Photogallery from "./countryPage/Photogallery";
 import VideoCountry from "./countryPage/VideoCountry";
 import Map from "./countryPage/Map";
 import Widgets from "./countryPage/Widgets";
+import { useSelector } from "react-redux";
 
 import { animateScroll as scroll } from "react-scroll";
 
 import styled from "styled-components";
 import "../fonts/fonts.css";
 import { useDispatch } from "react-redux";
-import { fetchCountryData } from "../redux/countrySlice";
+import {
+  fetchCountryData,
+  getCapitalName,
+  getCountryName,
+  getImageUrl,
+} from "../redux/countrySlice";
 
-const CountryPageIntro = styled.div`
+const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
   height: 60vh;
-  background: #ccc url("sample.jpg") no-repeat center center;
+  background: #ccc no-repeat center center;
+  background-size: cover;
   display: flex;
   align-items: center;
   text-transform: uppercase;
   color: #fff;
   position: relative;
+  ${(props) =>
+    props.imageUrl ? `background-image: url(${props.imageUrl}) ;` : "background-color: #ccc"}
   &:after {
     content: "";
     width: 100%;
@@ -113,8 +122,11 @@ const TabContent = styled.div`
 `;
 
 const CountryPage: React.FC = () => {
+  const countryName = useSelector(getCountryName);
+  const сapitalName = useSelector(getCapitalName);
+  const imageUrl = useSelector(getImageUrl);
   const [tabTitle, setTabTitle] = useState<string>("info");
-
+  console.log(typeof imageUrl);
   const dispatch = useDispatch();
 
   const countryPageElem = useRef<HTMLDivElement>(null);
@@ -133,12 +145,12 @@ const CountryPage: React.FC = () => {
   return (
     <div>
       <section>
-        <CountryPageIntro>
+        <CountryPageIntro imageUrl={imageUrl}>
           <Container>
             <CountryPageHeading>
-              Country name
+              {countryName}
               <br />
-              <small>Capital name</small>
+              <small>{сapitalName}</small>
             </CountryPageHeading>
           </Container>
         </CountryPageIntro>

@@ -36,7 +36,8 @@ const WidgetsShowBtn = styled.button`
   }
 `;
 const WidgetsItem = styled.div`
-  background-color: red;
+  box-shadow: 0 0 20px 2px rgb(0 0 0 / 30%);
+  border-radius: 6px;
   margin-bottom: 30px;
   .fas {
     font-size: 45px;
@@ -57,7 +58,6 @@ const Widgets: React.FC = () => {
           )}
         </WidgetsShowBtn> */}
         <WidgetsItem>
-          <i className="fas fa-cloud-sun"></i>
           <WeatherWidget />
         </WidgetsItem>
         <WidgetsItem>

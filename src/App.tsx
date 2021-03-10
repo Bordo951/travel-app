@@ -1,5 +1,5 @@
 import React from "react";
-import CountryPage from "./components/CountryPage";
+import CountryPage from "./pages/CountryPage";
 
 import { createGlobalStyle } from "styled-components";
 import "./fonts/fonts.css";

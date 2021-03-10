@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import InfoCountry from "./countryPage/InfoCountry";
-import Photogallery from "./countryPage/Photogallery";
-import VideoCountry from "./countryPage/VideoCountry";
-import Map from "./countryPage/Map";
-import Widgets from "./countryPage/Widgets";
+import InfoCountry from "../components/countryPage/InfoCountry";
+import Photogallery from "../components/countryPage/Photogallery";
+import VideoCountry from "../components/countryPage/VideoCountry";
+import Map from "../components/countryPage/Map";
+import Widgets from "../components/countryPage/Widgets";
 import { useSelector } from "react-redux";
 
 import { animateScroll as scroll } from "react-scroll";

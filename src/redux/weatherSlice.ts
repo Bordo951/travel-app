@@ -8,6 +8,7 @@ type WeatherType = {
   tempF: number;
   description: string;
   wind: string;
+  timezone: number;
 };
 
 type RequestStatus = "idle" | "loading" | "succeeded" | "failed";
@@ -76,6 +77,7 @@ export const fetchWeatherData = () => async (dispatch: AppDispatch, getState: ()
       tempF: Math.round(Number(data.main.temp) * 1.8 + 32),
       description: data.weather[0].description,
       wind: data.wind.speed,
+      timezone: Number(data.timezone),
     };
     dispatch(setWeatherData(weather));
   } catch (error) {
@@ -102,3 +104,4 @@ export type WeatherActions =
 export const getErrorMessage = (state: AppState) => state.weather.error;
 export const getRequestStatus = (state: AppState) => state.weather.status;
 export const getWeatherData = (state: AppState) => state.weather.entity;
+export const getTimezone = (state: AppState) => state.weather.entity?.timezone;

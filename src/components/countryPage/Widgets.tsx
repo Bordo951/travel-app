@@ -65,7 +65,6 @@ const Widgets: React.FC = () => {
           <CurrencyWidget />
         </WidgetsItem>
         <WidgetsItem>
-          <i className="fas fa-calendar-alt"></i>
           <DateAndTimeWidget />
         </WidgetsItem>
       </WidgetsItems>

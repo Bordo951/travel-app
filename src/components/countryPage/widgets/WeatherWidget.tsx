@@ -13,6 +13,7 @@ const Inner = styled.div`
   text-align: center;
   padding-bottom: 10px;
 `;
+
 const Title = styled.h3`
   font-size: 18px;
   font-weight: 700;
@@ -77,18 +78,18 @@ const WeatherWidget: React.FC = () => {
     <Inner>
       {status === "loading" && <Message>Loading...</Message>}
       {status === "failed" && <Message>{error}</Message>}
-      {status === "succeeded" && (
+      {status === "succeeded" && weather !== null && (
         <>
           <Title>{capitalName}</Title>
           <Row>
-            <WeatherIcon src={weather?.iconUrl} alt="icon" />
+            <WeatherIcon src={weather.iconUrl} alt="icon" />
             <TempWrapper>
-              <Temperature>{weather?.tempC}°C</Temperature>
-              <Temperature>{weather?.tempF}°F</Temperature>
+              <Temperature>{weather.tempC}°C</Temperature>
+              <Temperature>{weather.tempF}°F</Temperature>
             </TempWrapper>
           </Row>
-          <Description>{weather?.description}</Description>
-          <Wind>Wind: {weather?.wind} m/s</Wind>
+          <Description>{weather.description}</Description>
+          <Wind>Wind: {weather.wind} m/s</Wind>
         </>
       )}
     </Inner>

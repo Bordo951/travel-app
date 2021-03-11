@@ -126,7 +126,6 @@ const CountryPage: React.FC = () => {
   const сapitalName = useSelector(getCapitalName);
   const imageUrl = useSelector(getImageUrl);
   const [tabTitle, setTabTitle] = useState<string>("info");
-  console.log(typeof imageUrl);
   const dispatch = useDispatch();
 
   const countryPageElem = useRef<HTMLDivElement>(null);

@@ -10,7 +10,13 @@ import {
   TypeSelector,
   ZoomControl,
 } from "react-yandex-maps";
+import styled from "styled-components";
 import { getCapitalCoordinates, getCapitalName, getIsoCode } from "../../redux/countrySlice";
+
+const MapInner = styled.div`
+  width: 83%;
+  margin-bottom: 100px;
+`;
 
 const Map: React.FC = () => {
   const capitalCoords = useSelector(getCapitalCoordinates);
@@ -27,40 +33,42 @@ const Map: React.FC = () => {
     })();
   }, [isoCode]);
   return (
-    <YMaps
-      query={{
-        coordorder: "longlat",
-        lang: "en_US",
-        apikey: "7d285ab0-d630-43ed-8836-e79941f61a01",
-      }}
-    >
-      {capitalCoords && (
-        <CountryMap
-          defaultState={{ center: capitalCoords, zoom: 5 }}
-          defaultOptions={{ minZoom: 3, nativeFullscreen: true }}
-          width="100%"
-          height="500px"
-        >
-          <Placemark
-            geometry={capitalCoords}
-            properties={{ iconContent: capital }}
-            options={{ preset: "islands#nightStretchyIcon" }}
-          />
-          <Polygon
-            geometry={bordersGeo}
-            options={{
-              fillColor: "rgba(216, 51, 73, 0.1)",
-              strokeColor: "rgb(160, 25, 43)",
-              strokeWidth: 1,
-              strokeStyle: "solid",
-            }}
-          />
-          <FullscreenControl />
-          <TypeSelector />
-          <ZoomControl />
-        </CountryMap>
-      )}
-    </YMaps>
+    <MapInner>
+      <YMaps
+        query={{
+          coordorder: "longlat",
+          lang: "en_US",
+          apikey: "7d285ab0-d630-43ed-8836-e79941f61a01",
+        }}
+      >
+        {capitalCoords && (
+          <CountryMap
+            defaultState={{ center: capitalCoords, zoom: 5 }}
+            defaultOptions={{ minZoom: 3, nativeFullscreen: true }}
+            width="100%"
+            height="500px"
+          >
+            <Placemark
+              geometry={capitalCoords}
+              properties={{ iconContent: capital }}
+              options={{ preset: "islands#nightStretchyIcon" }}
+            />
+            <Polygon
+              geometry={bordersGeo}
+              options={{
+                fillColor: "rgba(216, 51, 73, 0.1)",
+                strokeColor: "rgb(160, 25, 43)",
+                strokeWidth: 1,
+                strokeStyle: "solid",
+              }}
+            />
+            <FullscreenControl />
+            <TypeSelector />
+            <ZoomControl />
+          </CountryMap>
+        )}
+      </YMaps>
+    </MapInner>
   );
 };
 

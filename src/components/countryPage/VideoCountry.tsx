@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getvideoUrl } from "../../redux/countrySlice";
 
 const VideoCountryInner = styled.div`
-  width: 100%;
+  width: 83%;
   height: 500px;
   margin-bottom: 100px; // мб заменить
 `;

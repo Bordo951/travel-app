@@ -12,6 +12,8 @@ const WidgetsItems = styled.div<{ visible: boolean }>`
   margin-left: 10px;
   transition: all 0.5s ease;
   /* ${(props) => (props.visible ? "margin-right: 0;" : "margin-right: -260px;")} */
+  position: absolute;
+  right: 2%;
 `;
 // eslint-disable-next-line
 const WidgetsShowBtn = styled.button`

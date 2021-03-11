@@ -17,6 +17,7 @@ import {
   getCountryName,
   getImageUrl,
 } from "../redux/countrySlice";
+import { getCountryPageLocalization } from "../redux/localizationSlice";
 
 const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
@@ -125,6 +126,7 @@ const CountryPage: React.FC = () => {
   const countryName = useSelector(getCountryName);
   const сapitalName = useSelector(getCapitalName);
   const imageUrl = useSelector(getImageUrl);
+  const localization = useSelector(getCountryPageLocalization);
   const [tabTitle, setTabTitle] = useState<string>("info");
   const dispatch = useDispatch();
 
@@ -159,25 +161,29 @@ const CountryPage: React.FC = () => {
               onClick={() => handleTab("info")}
               className={tabTitle === "info" ? "active" : ""}
             >
-              <i className="fas fa-info"></i>Information
+              <i className="fas fa-info"></i>
+              {localization.tabs.info}
             </CountryPageTab>
             <CountryPageTab
               onClick={() => handleTab("gallery")}
               className={tabTitle === "gallery" ? "active" : ""}
             >
-              <i className="fas fa-image"></i>Photogallery
+              <i className="fas fa-image"></i>
+              {localization.tabs.photo}
             </CountryPageTab>
             <CountryPageTab
               onClick={() => handleTab("video")}
               className={tabTitle === "video" ? "active" : ""}
             >
-              <i className="fab fa-youtube"></i>Video
+              <i className="fab fa-youtube"></i>
+              {localization.tabs.video}
             </CountryPageTab>
             <CountryPageTab
               onClick={() => handleTab("map")}
               className={tabTitle === "map" ? "active" : ""}
             >
-              <i className="fas fa-map-marker-alt"></i>Map
+              <i className="fas fa-map-marker-alt"></i>
+              {localization.tabs.map}
             </CountryPageTab>
           </Container>
         </CountryPageTabs>

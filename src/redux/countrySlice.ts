@@ -68,9 +68,15 @@ export const fetchCountryData = (id: string) => async (
   getState: () => AppState
 ) => {
   const url = `https://vhoreho-task-travel-app.herokuapp.com/countries/${id}`;
+  const lang = getState().localization.language;
+  const queryParams = {
+    params: {
+      lang,
+    },
+  };
   dispatch(setRequestStatus("loading"));
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url, queryParams);
     const country: CountryType = {
       id: data.id,
       name: data.name,

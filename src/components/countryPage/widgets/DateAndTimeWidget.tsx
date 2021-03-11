@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { getLanguage } from "../../../redux/localizationSlice";
 import { getTimezone } from "../../../redux/weatherSlice";
 
 const Inner = styled.div`
@@ -57,19 +58,20 @@ type DateType = {
 
 const DateAndTimeWidget: React.FC = () => {
   const timezone = useSelector(getTimezone);
+  const language = useSelector(getLanguage);
   const [date, setDate] = useState<DateType | null>(null);
 
   useEffect(() => {
     if (timezone === undefined) return;
     const interval = setInterval(() => {
       const dateInMs = Date.now() + timezone * 1000;
-      const formattedDate = dateConverter(dateInMs, "en");
+      const formattedDate = dateConverter(dateInMs, language);
       setDate(formattedDate);
     }, 1000);
     return () => {
       clearInterval(interval);
     };
-  }, [timezone]);
+  }, [timezone, language]);
 
   return (
     <>

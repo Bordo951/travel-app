@@ -60,9 +60,15 @@ export const countriesReducer = (
 //thunks
 export const fetchCountriesData = () => async (dispatch: AppDispatch, getState: () => AppState) => {
   const url = "https://vhoreho-task-travel-app.herokuapp.com/countries";
+  const lang = getState().localization.language;
+  const queryParams = {
+    params: {
+      lang,
+    },
+  };
   dispatch(setRequestStatus("loading"));
   try {
-    const { data } = await axios.get<CountryType[]>(url);
+    const { data } = await axios.get<CountryType[]>(url, queryParams);
     const countries = data.map((el) => ({
       id: el.id,
       name: el.name,

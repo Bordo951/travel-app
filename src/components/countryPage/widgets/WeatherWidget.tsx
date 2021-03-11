@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getCapitalName } from "../../../redux/countrySlice";
+import { getCountryPageLocalization } from "../../../redux/localizationSlice";
 import {
   fetchWeatherData,
   getErrorMessage,
@@ -68,6 +69,7 @@ const WeatherWidget: React.FC = () => {
   const weather = useSelector(getWeatherData);
   const status = useSelector(getRequestStatus);
   const error = useSelector(getErrorMessage);
+  const localization = useSelector(getCountryPageLocalization);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -89,7 +91,9 @@ const WeatherWidget: React.FC = () => {
             </TempWrapper>
           </Row>
           <Description>{weather.description}</Description>
-          <Wind>Wind: {weather.wind} m/s</Wind>
+          <Wind>
+            {localization.weather.wind}: {weather.wind} {localization.weather.windUnits}
+          </Wind>
         </>
       )}
     </Inner>

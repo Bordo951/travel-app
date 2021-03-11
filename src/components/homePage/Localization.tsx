@@ -36,7 +36,7 @@ const SelectBox = styled.select`
   color: #fff;
   cursor: pointer;
   
-  font-family: "Montserrat-Medium",sans-serif;
+  font-family: "Montserrat-Bold",sans-serif;
   font-size: 18px;
   text-transform: uppercase;
 

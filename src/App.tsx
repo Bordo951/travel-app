@@ -1,5 +1,6 @@
 import React from "react";
 import CountryPage from "./pages/CountryPage";
+import HomePage from "./pages/HomePage";
 
 import { createGlobalStyle } from "styled-components";
 import "./fonts/fonts.css";
@@ -23,6 +24,7 @@ const App: React.FC = () => {
   return (
     <div>
       <GlobalStyle />
+      <HomePage />
       <CountryPage />
     </div>
   );

@@ -58,12 +58,13 @@ export const fetchWeatherData = () => async (dispatch: AppDispatch, getState: ()
   if (countryData === null) return;
   const apiKey = "7f078665db64dead6faecd3db1f4ad9a";
   const [lon, lat] = countryData.capitalCoordinates;
+  const lang = getState().localization.language;
   const queryParams = {
     params: {
       lon,
       lat,
       units: "metric",
-      lang: "en",
+      lang: lang,
       appid: apiKey,
     },
   };

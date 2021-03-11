@@ -12,6 +12,7 @@ import {
 } from "react-yandex-maps";
 import styled from "styled-components";
 import { getCapitalCoordinates, getCapitalName, getIsoCode } from "../../redux/countrySlice";
+import { getLanguage } from "../../redux/localizationSlice";
 
 const MapInner = styled.div`
   width: 83%;
@@ -22,7 +23,9 @@ const Map: React.FC = () => {
   const capitalCoords = useSelector(getCapitalCoordinates);
   const isoCode = useSelector(getIsoCode);
   const capital = useSelector(getCapitalName);
+  const language = useSelector(getLanguage);
   const [bordersGeo, setBordersGeo] = useState();
+  const [mapLanguage, setMapLanguage] = useState<"ru_RU" | "en_RU">("en_RU");
 
   useEffect(() => {
     (async () => {
@@ -32,12 +35,18 @@ const Map: React.FC = () => {
       }
     })();
   }, [isoCode]);
+
+  useEffect(() => {
+    const lang = language === "ru" ? "ru_RU" : "en_RU";
+    setMapLanguage(lang);
+  }, [language]);
   return (
     <MapInner>
       <YMaps
+        key={mapLanguage}
         query={{
           coordorder: "longlat",
-          lang: "en_US",
+          lang: mapLanguage,
           apikey: "7d285ab0-d630-43ed-8836-e79941f61a01",
         }}
       >

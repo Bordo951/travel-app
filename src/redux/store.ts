@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, createStore, Store } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk, { ThunkDispatch } from "redux-thunk";
+import { AuthActions, authReducer, AuthState } from "./authSlice";
 import { CountriesActions, countriesReducer, CountriesState } from "./countriesSlice";
 import { CountryActions, countryReducer, CountryState } from "./countrySlice";
 import { LocalizationActions, LocalizationReducer, LocalizationState } from "./localizationSlice";
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   country: countryReducer,
   weather: weatherReducer,
   localization: LocalizationReducer,
+  auth: authReducer,
 });
 
 export const store: Store<AppState, AppActions> & {
@@ -24,8 +26,14 @@ export type AppState = {
   country: CountryState;
   weather: WeatherState;
   localization: LocalizationState;
+  auth: AuthState;
 };
 
-export type AppActions = CountriesActions | CountryActions | WeatherActions | LocalizationActions;
+export type AppActions =
+  | CountriesActions
+  | CountryActions
+  | WeatherActions
+  | LocalizationActions
+  | AuthActions;
 
 export type AppDispatch = ThunkDispatch<AppState, unknown, AppActions>;

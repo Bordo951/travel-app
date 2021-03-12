@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, HashRouter } from "react-router-dom";
+import { Route, HashRouter, Redirect } from "react-router-dom";
 import CountryPage from "./pages/CountryPage";
 import HomePage from "./pages/HomePage";
 
@@ -9,8 +9,11 @@ import Header from "./parts/Header";
 import Footer from "./parts/Footer";
 
 import { Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "./redux/localizationSlice";
+import { SignUp } from "./pages/SingUp";
+import { checkUser, getUserName } from "./redux/authSlice";
+import { LogIn } from "./pages/LogIn";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -28,12 +31,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: React.FC = () => {
+  const userName = useSelector(getUserName);
   const dispatch = useDispatch();
   useEffect(() => {
     const lang = localStorage.getItem("TA-34-lang");
     if (lang === "ru" || lang === "en" || lang === "de") {
       dispatch(setLanguage(lang));
     }
+    dispatch(checkUser());
   }, [dispatch]);
   return (
     <HashRouter>
@@ -42,6 +47,8 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/country/:id" component={CountryPage} />
+        <Route path="/signup">{userName !== "" ? <Redirect to="/" /> : <SignUp />}</Route>
+        <Route path="/login">{userName !== "" ? <Redirect to="/" /> : <LogIn />}</Route>
       </Switch>
       <Footer />
     </HashRouter>

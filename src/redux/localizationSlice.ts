@@ -3,6 +3,7 @@ import { homePage } from "../localization/homePage";
 import { footer } from "../localization/footer";
 import { header } from "../localization/header";
 import { AppDispatch, AppState } from "./store";
+import { auth } from "../localization/auth";
 
 //types
 export type CountryPageLocalization = {
@@ -30,6 +31,7 @@ export type HomePageLocalization = {
 export type HeaderLocalization = {
   login: string;
   signup: string;
+  logout: string;
 };
 
 export type FooterLocalization = {
@@ -49,6 +51,30 @@ export type FooterLocalization = {
   copyright: string;
 };
 
+export type AuthLocalization = {
+  signUp: string;
+  logIn: string;
+  logOut: string;
+  inputs: {
+    name: {
+      text: string;
+      placeholder: string;
+    };
+    email: {
+      text: string;
+      placeholder: string;
+    };
+    password: {
+      text: string;
+      placeholder: string;
+    };
+  };
+  buttons: {
+    signUp: string;
+    logIn: string;
+  };
+};
+
 export type LanguageType = "ru" | "en" | "de";
 
 export type LocalizationState = {
@@ -57,6 +83,7 @@ export type LocalizationState = {
   homePage: HomePageLocalization;
   footer: FooterLocalization;
   header: HeaderLocalization;
+  auth: AuthLocalization;
 };
 
 //initial state
@@ -66,6 +93,7 @@ const initState: LocalizationState = {
   homePage: homePage["en"],
   footer: footer["en"],
   header: header["en"],
+  auth: auth["en"],
 };
 
 // reducer
@@ -81,6 +109,7 @@ export const LocalizationReducer = (
         homePage: homePage[action.payload],
         footer: footer[action.payload],
         header: header[action.payload],
+        auth: auth[action.payload],
       };
     default:
       return state;
@@ -108,3 +137,4 @@ export const getCountryPageLocalization = (state: AppState) => state.localizatio
 export const getHomePageLocalization = (state: AppState) => state.localization.homePage;
 export const getFooterLocalization = (state: AppState) => state.localization.footer;
 export const getHeaderLocalization = (state: AppState) => state.localization.header;
+export const getAuthLocalization = (state: AppState) => state.localization.auth;

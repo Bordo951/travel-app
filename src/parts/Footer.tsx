@@ -62,7 +62,7 @@ const About = styled.div`
   p {
     font-family: "Montserrat-Medium", sans-serif;
     font-size: 18px;
-    color: #fff;
+    color: #bebebe;
     text-indent: 1.5em;
     text-align: justify;
   } 

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Localization from "../components/homePage/Header/Localization";
 import LogoHeader from "../components/homePage/Header/LogoHeader";
 import Autorization from "../components/homePage/Header/Autorization";
-import Search from "../components/homePage/Header/Search";
 
 const HeaderContentContainer = styled.div`
     display: flex;
@@ -18,9 +17,6 @@ const HeaderContentContainer = styled.div`
         flex-direction: column-reverse;
     }
 `;
-const SearchWrapper = styled.div`
-    padding: 10px 0;
-`;
 
 const Header: React.FC = () => {
     return (
@@ -30,9 +26,6 @@ const Header: React.FC = () => {
                 <Localization/>
                 <Autorization/>
             </HeaderContentContainer>
-            <SearchWrapper>
-                <Search/>
-            </SearchWrapper>
         </header>
     )
 };

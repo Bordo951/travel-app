@@ -4,23 +4,32 @@ import styled from "styled-components";
 import {getCountryName} from "../redux/countrySlice";
 import Localization from "../components/homePage/Header/Localization";
 import LogoHeader from "../components/homePage/Header/LogoHeader";
+import Autorization from "../components/homePage/Header/Autorization";
 import Search from "../components/homePage/Header/Search";
 
-const HeaderWrapper = styled.header`
+const HeaderContentContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 30px;
-    border-bottom: 1px solid rgba(255,255,255,0);
+    padding: 5px 50px;
+    background-color: #000;
+`;
+const SearchWrapper = styled.div`
+    padding: 10px 0;
 `;
 
 const Header: React.FC = () => {
     return (
-        <HeaderWrapper>
-            <LogoHeader/>
-            <Search/>
-            <Localization/>
-        </HeaderWrapper>
+        <header>
+            <HeaderContentContainer>
+                <LogoHeader/>
+                <Localization/>
+                <Autorization/>
+            </HeaderContentContainer>
+            <SearchWrapper>
+                <Search/>
+            </SearchWrapper>
+        </header>
     )
 }
 

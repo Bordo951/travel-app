@@ -3,18 +3,19 @@ import styled from "styled-components";
 
 const FormBox = styled.form`
   position: relative;
-  width: 30rem;
+  width: 80rem;
+  margin: 0 auto;
   //background: #57bd84;
   //border: 2px solid rgba(223, 89, 0, .5);
   border-radius: 9px;
   
   input, 
   button {
-    height: 60px;
+    height: 45px;
     font-family: "Montserrat-Medium", sans-serif;
+    font-size: 1.2rem;
     border: 0;
     color: #2f2f2f;
-    font-size: 1.8rem;
   }
     
   input[type="search"] {

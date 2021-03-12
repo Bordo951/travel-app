@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 
 const LogoWrapper = styled.div`
-  width: 180px;
+  width: 100px;
   transition: transform .5s;  
   &:hover {
     transform: scale(1.05);
@@ -19,7 +19,7 @@ const LogoHeader: React.FC = () => {
     return (
         <LogoWrapper>
             <a href='/'>
-                <img src='./images/logo-header.png' alt="logo-header"/>
+                <img src='./images/logo-footer.png' alt="logo-header"/>
             </a>
         </LogoWrapper>
     )

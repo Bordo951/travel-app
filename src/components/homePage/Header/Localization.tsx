@@ -7,17 +7,17 @@ const LocalizationHeader = styled.div`
   width: 10em;
   height: 3em;
   line-height: 3;
-  background: #DF5900;
+  background:  #363636;
   overflow: hidden;
   
   &::after {
   content: '\\25BC';
-  color: #C9C9C9;
+  color: #FFF;
   position: absolute;
   top: 0;
   right: 0;
   padding: 0 1em;
-  background: #FF6600;
+  background: rgba(77,77,77,.8);
   cursor: pointer;
   pointer-events: none;
   -webkit-transition: .25s all ease;
@@ -26,7 +26,7 @@ const LocalizationHeader = styled.div`
   }
   
   &:hover::after {
-  color: #FFF;
+  color: #DF5900;
   }
 `;
 
@@ -36,7 +36,7 @@ const SelectBox = styled.select`
   color: #fff;
   cursor: pointer;
   
-  font-family: "Montserrat-Bold",sans-serif;
+  font-family: "Montserrat-Medium",sans-serif;
   font-size: 18px;
   text-transform: uppercase;
 
@@ -47,7 +47,7 @@ const SelectBox = styled.select`
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #DF5900;
+  background:  #363636;
   background-image: none;
   
   &::-ms-expand {

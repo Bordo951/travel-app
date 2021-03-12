@@ -28,6 +28,11 @@ const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6 {
     line-height: 1.75;
   }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const App: React.FC = () => {

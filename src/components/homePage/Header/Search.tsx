@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const FormBox = styled.form`
   position: relative;
-  width: 80rem;
+  width: 90%;
   margin: 0 auto;
   //background: #57bd84;
   //border: 2px solid rgba(223, 89, 0, .5);

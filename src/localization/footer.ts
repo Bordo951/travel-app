@@ -32,7 +32,7 @@ const ru: FooterLocalization = {
     members: {
       farrukh: "Фаррух Хусанов",
       irina: "Ирина Селиванова",
-      vladislav: "Vladislav Horeh",
+      vladislav: "Владислав Горех",
       mahti: "Махти Шаваев",
     },
   },

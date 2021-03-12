@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import {getCountryName} from "../redux/countrySlice";
-import Localization from "../components/homePage/Localization";
-import Logo from "../components/homePage/Logo";
-import Search from "../components/homePage/Search";
+import Localization from "../components/homePage/Header/Localization";
+import LogoHeader from "../components/homePage/Header/LogoHeader";
+import Search from "../components/homePage/Header/Search";
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -17,7 +17,7 @@ const HeaderWrapper = styled.header`
 const Header: React.FC = () => {
     return (
         <HeaderWrapper>
-            <Logo/>
+            <LogoHeader/>
             <Search/>
             <Localization/>
         </HeaderWrapper>

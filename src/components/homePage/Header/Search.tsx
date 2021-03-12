@@ -28,7 +28,7 @@ const FormBox = styled.form`
     appearance: none;
     transition: all .3s cubic-bezier(0, 0, 0.43, 1.49);
     transition-property: width, border-radius;
-    z-index: 1;
+    z-index: 5;
     position: relative;
   }
   button {

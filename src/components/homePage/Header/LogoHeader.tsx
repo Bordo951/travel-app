@@ -15,14 +15,14 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const Logo: React.FC = () => {
+const LogoHeader: React.FC = () => {
     return (
         <LogoWrapper>
             <a href='/'>
-                <img src='./images/logo.png' alt="logo"/>
+                <img src='./images/logo-header.png' alt="logo-header"/>
             </a>
         </LogoWrapper>
     )
 }
 
-export default Logo;
+export default LogoHeader;

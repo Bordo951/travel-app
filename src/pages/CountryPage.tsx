@@ -5,7 +5,7 @@ import VideoCountry from "../components/countryPage/VideoCountry";
 import Map from "../components/countryPage/Map";
 import Widgets from "../components/countryPage/Widgets";
 import { useSelector } from "react-redux";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { animateScroll as scroll } from "react-scroll";
 
@@ -18,7 +18,7 @@ import {
   getCountryName,
   getImageUrl,
 } from "../redux/countrySlice";
-import { getCountryPageLocalization } from "../redux/localizationSlice";
+import { getCountryPageLocalization, getLanguage } from "../redux/localizationSlice";
 
 const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
@@ -133,6 +133,7 @@ const CountryPage: React.FC<ICountryProps> = () => {
   const сapitalName = useSelector(getCapitalName);
   const imageUrl = useSelector(getImageUrl);
   const localization = useSelector(getCountryPageLocalization);
+  const lang = useSelector(getLanguage);
   const [tabTitle, setTabTitle] = useState<string>("info");
   const dispatch = useDispatch();
 
@@ -140,7 +141,7 @@ const CountryPage: React.FC<ICountryProps> = () => {
 
   useEffect(() => {
     dispatch(fetchCountryData(CountryProps.id));
-  }, [dispatch]);
+  }, [dispatch, lang, CountryProps]);
 
   const handleTab = (name: string) => {
     setTabTitle(name);

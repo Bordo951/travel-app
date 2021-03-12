@@ -11,6 +11,12 @@ const HeaderContentContainer = styled.div`
     justify-content: space-between;
     padding: 5px 50px;
     background-color: #000;
+    
+    @media (max-width: 576px) {
+        display: none;
+        display: flex;
+        flex-direction: column-reverse;
+    }
 `;
 const SearchWrapper = styled.div`
     padding: 10px 0;

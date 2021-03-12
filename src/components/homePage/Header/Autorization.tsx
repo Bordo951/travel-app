@@ -2,6 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 
 const AutorizationHeader = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     a {
         font-family: "Montserrat-Medium", sans-serif;
         display: inline-block;
@@ -15,9 +18,7 @@ const AutorizationHeader = styled.div`
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
         outline: none;
-    }
-    
-  
+    }  
 `;
 const LogIn = styled.div`
     display: flex;
@@ -43,9 +44,12 @@ const SignUp = styled.div`
       &:hover {
         color: #FFF;
         background-color: #DF5900;
-      }
-            
-    }
+      }            
+  }
+  
+  @media (max-width: 576px) {
+     margin-bottom: 10px;
+  }
 `;
 
 const Autorization: React.FC = () => {

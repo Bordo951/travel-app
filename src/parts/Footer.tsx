@@ -4,7 +4,7 @@ import LogoFooter from "../components/homePage/Footer/LogoFooter";
 import Team from "../components/homePage/Footer/Team";
 
 const FooterWrapper = styled.footer`
-  background-color: #DF5900;
+  background-color: #272727;
   border-top: 1px solid #e6e6e6;
 `;
 
@@ -62,7 +62,7 @@ const About = styled.div`
   p {
     font-family: "Montserrat-Medium", sans-serif;
     font-size: 18px;
-    color: #fff;
+    color: #bebebe;
     text-indent: 1.5em;
     text-align: justify;
   } 

@@ -1,10 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import "../fonts/fonts.css";
+import "../../../fonts/fonts.css";
 
-const Main: React.FC = () => {
+const СountriesBlock: React.FC = () => {
     return (
-        <main>
+        <div>
             <ul className="navigation">
                 <li className="navigation__item"><NavLink className="navigation__link" to="/country/60270368f347c8267c02a528">Italy</NavLink></li>
                 <li className="navigation__item"><NavLink className="navigation__link" to="/country/604738f88a53d6c667d7fed9">Belarus</NavLink></li>
@@ -14,8 +14,8 @@ const Main: React.FC = () => {
                 <li className="navigation__item"><NavLink className="navigation__link" to="/country/60476997d817eac0b87e0d13">France</NavLink></li>
                 <li className="navigation__item"><NavLink className="navigation__link" to="/country/60476acbd817eac0b87e0d14">Norway</NavLink></li>
             </ul>
-        </main>
+        </div>
     )
 };
 
-export default Main;
+export default СountriesBlock;

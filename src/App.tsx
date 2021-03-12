@@ -1,8 +1,14 @@
 import React from "react";
+import {Route, HashRouter} from "react-router-dom";
 import CountryPage from "./pages/CountryPage";
+import HomePage from "./pages/HomePage";
 
 import { createGlobalStyle } from "styled-components";
 import "./fonts/fonts.css";
+import Header from "./parts/Header";
+import Footer from "./parts/Footer";
+
+import {Switch} from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -21,10 +27,15 @@ const GlobalStyle = createGlobalStyle`
 
 const App: React.FC = () => {
   return (
-    <div>
-      <GlobalStyle />
-      <CountryPage />
-    </div>
+      <HashRouter>
+          <GlobalStyle />
+          <Header/>
+          <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/country/:id" component={CountryPage}/>
+          </Switch>
+          <Footer/>
+      </HashRouter>
   );
 };
 

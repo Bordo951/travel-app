@@ -5,6 +5,7 @@ import VideoCountry from "../components/countryPage/VideoCountry";
 import Map from "../components/countryPage/Map";
 import Widgets from "../components/countryPage/Widgets";
 import { useSelector } from "react-redux";
+import {useParams} from "react-router-dom";
 
 import { animateScroll as scroll } from "react-scroll";
 
@@ -122,7 +123,12 @@ const TabContent = styled.div`
   flex: 1;
 `;
 
-const CountryPage: React.FC = () => {
+interface ICountryProps {
+  id: string;
+}
+
+const CountryPage: React.FC<ICountryProps> = () => {
+  const CountryProps: ICountryProps = useParams();
   const countryName = useSelector(getCountryName);
   const сapitalName = useSelector(getCapitalName);
   const imageUrl = useSelector(getImageUrl);
@@ -133,7 +139,7 @@ const CountryPage: React.FC = () => {
   const countryPageElem = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    dispatch(fetchCountryData("604738f88a53d6c667d7fed9"));
+    dispatch(fetchCountryData(CountryProps.id));
   }, [dispatch]);
 
   const handleTab = (name: string) => {

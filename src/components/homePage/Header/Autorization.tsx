@@ -1,6 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { getUserName, logOut } from "../../../redux/authSlice";
 import { getHeaderLocalization } from "../../../redux/localizationSlice";
 
 const AutorizationHeader = styled.div`
@@ -54,16 +56,49 @@ const SignUp = styled.div`
   }
 `;
 
+const LogOut = styled.div`
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px #df5900;
+  color: #df5900;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #fff;
+    background-color: #df5900;
+  }
+`;
+
+const UserName = styled.div`
+  margin-right: 30px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: default;
+`;
+
 const Autorization: React.FC = () => {
   const localization = useSelector(getHeaderLocalization);
+  const userName = useSelector(getUserName);
+  const dispatch = useDispatch();
   return (
     <AutorizationHeader>
-      <LogIn>
-        <a href="#">{localization.login}</a>
-      </LogIn>
-      <SignUp>
-        <a href="#">{localization.signup}</a>
-      </SignUp>
+      {userName === "" ? (
+        <>
+          <LogIn>
+            <Link to="/login">{localization.login}</Link>
+          </LogIn>
+          <SignUp>
+            <Link to="/signup">{localization.signup}</Link>
+          </SignUp>
+        </>
+      ) : (
+        <>
+          <UserName>{userName}</UserName>
+          <LogOut onClick={() => dispatch(logOut())}>{localization.logout}</LogOut>
+        </>
+      )}
     </AutorizationHeader>
   );
 };

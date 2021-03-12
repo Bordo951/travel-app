@@ -24,7 +24,7 @@ const LogoFooter: React.FC = () => {
     return (
         <LogoWrapper>
             <a href='/'>
-                <img src='./images/logo-footer.png' alt="logo-footer"/>
+                <img src='./images/logo.png' alt="logo"/>
             </a>
         </LogoWrapper>
     )

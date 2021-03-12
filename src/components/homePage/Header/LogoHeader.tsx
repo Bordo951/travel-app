@@ -24,7 +24,7 @@ const LogoHeader: React.FC = () => {
     return (
         <LogoWrapper>
             <NavLink exact to="/">
-                <img src='./images/logo-footer.png' alt="logo-header"/>
+                <img src='./images/logo.png' alt="logo"/>
             </NavLink>
         </LogoWrapper>
     )

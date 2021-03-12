@@ -69,14 +69,7 @@ const FormBox = styled.form`
 const Search: React.FC = () => {
     const handleSubmitEvent = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // console.log(event);
-    }
-
-    //onClick={(event) => handleClickOnButton(event)}
-    const handleClickOnButton = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-        console.log(event);
-    }
+    };
 
     return (
         <FormBox onSubmit={(event) => handleSubmitEvent(event)}
@@ -87,6 +80,6 @@ const Search: React.FC = () => {
             <button type="submit">Go</button>
         </FormBox>
     )
-}
+};
 
 export default Search;

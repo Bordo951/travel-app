@@ -101,6 +101,6 @@ const Footer: React.FC = () => {
             </AboutCourse>
         </FooterWrapper>
     )
-}
+};
 
 export default Footer;

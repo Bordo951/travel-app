@@ -60,25 +60,25 @@ const Team: React.FC = () => {
             <h3>Our team</h3>
             <ul>
                 <li>
-                    <a href="https://github.com/vhoreho" target="_blank">
+                    <a href="https://github.com/vhoreho" target="_blank" rel="noreferrer">
                         <img src="./images/traveler1.svg" alt="traveler1"/>
                         Vladislav Horeh
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/khusanov-95" target="_blank">
+                    <a href="https://github.com/khusanov-95" target="_blank" rel="noreferrer">
                         <img src="./images/traveler2.svg" alt="traveler2"/>
                         Farrukh Khusanov
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/Bordo951" target="_blank">
+                    <a href="https://github.com/Bordo951" target="_blank" rel="noreferrer">
                         <img src="./images/traveler3.svg" alt="traveler3"/>
                         Irina Selivanova
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/mahtishavaev" target="_blank">
+                    <a href="https://github.com/mahtishavaev" target="_blank" rel="noreferrer">
                         <img src="./images/traveler4.svg" alt="traveler4"/>
                         Mahti Shavaev
                     </a>
@@ -86,6 +86,6 @@ const Team: React.FC = () => {
             </ul>
         </TeamBox>
     )
-}
+};
 
 export default Team;

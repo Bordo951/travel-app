@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import {NavLink} from "react-router-dom";
 
 const LogoWrapper = styled.div`
   width: 100px;
@@ -18,11 +19,11 @@ const LogoWrapper = styled.div`
 const LogoHeader: React.FC = () => {
     return (
         <LogoWrapper>
-            <a href='/'>
+            <NavLink exact to="/">
                 <img src='./images/logo-footer.png' alt="logo-header"/>
-            </a>
+            </NavLink>
         </LogoWrapper>
     )
-}
+};
 
 export default LogoHeader;

@@ -1,7 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import {getCountryName} from "../redux/countrySlice";
 import Localization from "../components/homePage/Header/Localization";
 import LogoHeader from "../components/homePage/Header/LogoHeader";
 import Autorization from "../components/homePage/Header/Autorization";
@@ -31,6 +29,6 @@ const Header: React.FC = () => {
             </SearchWrapper>
         </header>
     )
-}
+};
 
 export default Header;

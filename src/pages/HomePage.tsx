@@ -10,11 +10,11 @@ const SearchWrapper = styled.div`
 
 const HomePage: React.FC = () => {
     return (
-        <main>
+        <main style={{ flex: '1 0 auto' }}>
             <SearchWrapper>
-                <Search/>
+                <Search />
             </SearchWrapper>
-            <СountriesBlock/>
+            <СountriesBlock />
         </main>
     )
 };

@@ -1,5 +1,7 @@
-import React from 'react';
+import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { getFooterLocalization } from "../../../redux/localizationSlice";
 
 const TeamBox = styled.div`
   margin-right: 50px;
@@ -8,7 +10,7 @@ const TeamBox = styled.div`
     font-family: "Montserrat-Bold", sans-serif;
     font-size: 24px;
     color: #fff;
-  }   
+  }
   img {
     width: 100%;
   }
@@ -34,58 +36,59 @@ const TeamBox = styled.div`
     display: inline-block;
     color: #fff;
     &:hover {
-        color: #bebebe;
+      color: #bebebe;
     }
   }
   img {
     width: 25px;
     margin-right: 5px;
   }
-  
-  @media (max-width: 992px) {    
+
+  @media (max-width: 992px) {
     h3 {
-        margin: 15px;
-        text-align: center;
+      margin: 15px;
+      text-align: center;
     }
     ul {
-        max-width: 200px;
-        margin: 0 auto;
+      max-width: 200px;
+      margin: 0 auto;
     }
   }
 `;
 
 const Team: React.FC = () => {
-    return (
-        <TeamBox>
-            <h3>Our team</h3>
-            <ul>
-                <li>
-                    <a href="https://github.com/vhoreho" target="_blank" rel="noreferrer">
-                        <img src="./images/traveler1.svg" alt="traveler1"/>
-                        Vladislav Horeh
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/khusanov-95" target="_blank" rel="noreferrer">
-                        <img src="./images/traveler2.svg" alt="traveler2"/>
-                        Farrukh Khusanov
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/Bordo951" target="_blank" rel="noreferrer">
-                        <img src="./images/traveler3.svg" alt="traveler3"/>
-                        Irina Selivanova
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/mahtishavaev" target="_blank" rel="noreferrer">
-                        <img src="./images/traveler4.svg" alt="traveler4"/>
-                        Mahti Shavaev
-                    </a>
-                </li>
-            </ul>
-        </TeamBox>
-    )
+  const localization = useSelector(getFooterLocalization);
+  return (
+    <TeamBox>
+      <h3>{localization.team.title}</h3>
+      <ul>
+        <li>
+          <a href="https://github.com/vhoreho" target="_blank" rel="noreferrer">
+            <img src="./images/traveler1.svg" alt="traveler1" />
+            {localization.team.members.vladislav}
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/khusanov-95" target="_blank" rel="noreferrer">
+            <img src="./images/traveler2.svg" alt="traveler2" />
+            {localization.team.members.farrukh}
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Bordo951" target="_blank" rel="noreferrer">
+            <img src="./images/traveler3.svg" alt="traveler3" />
+            {localization.team.members.irina}
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/mahtishavaev" target="_blank" rel="noreferrer">
+            <img src="./images/traveler4.svg" alt="traveler4" />
+            {localization.team.members.mahti}
+          </a>
+        </li>
+      </ul>
+    </TeamBox>
+  );
 };
 
 export default Team;

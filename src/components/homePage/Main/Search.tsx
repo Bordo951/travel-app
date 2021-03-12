@@ -1,5 +1,8 @@
-import React from 'react';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { filterCountries, getSearchQuery } from "../../../redux/countriesSlice";
+import { getHomePageLocalization } from "../../../redux/localizationSlice";
 
 const FormBox = styled.form`
   position: relative;
@@ -8,8 +11,8 @@ const FormBox = styled.form`
   //background: #57bd84;
   //border: 2px solid rgba(223, 89, 0, .5);
   border-radius: 9px;
-  
-  input, 
+
+  input,
   button {
     height: 45px;
     font-family: "Montserrat-Medium", sans-serif;
@@ -17,7 +20,7 @@ const FormBox = styled.form`
     border: 0;
     color: #2f2f2f;
   }
-    
+
   input[type="search"] {
     outline: 0;
     width: 100%;
@@ -27,7 +30,7 @@ const FormBox = styled.form`
     padding: 0 1.6rem;
     border-radius: 9px;
     appearance: none;
-    transition: all .3s cubic-bezier(0, 0, 0.43, 1.49);
+    transition: all 0.3s cubic-bezier(0, 0, 0.43, 1.49);
     transition-property: width, border-radius;
     z-index: 5;
     position: relative;
@@ -43,9 +46,9 @@ const FormBox = styled.form`
     background: #df5900;
     border-radius: 0 9px 9px 0;
     cursor: pointer;
-    
+
     &:focus {
-        outline: 0;
+      outline: 0;
     }
   }
   input:not(:placeholder-shown) {
@@ -67,19 +70,30 @@ const FormBox = styled.form`
 `;
 
 const Search: React.FC = () => {
-    const handleSubmitEvent = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-    };
+  const localization = useSelector(getHomePageLocalization);
+  const searchQuery = useSelector(getSearchQuery);
+  const dispatch = useDispatch();
+  const handleSubmitEvent = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(filterCountries(searchQuery));
+  };
 
-    return (
-        <FormBox onSubmit={(event) => handleSubmitEvent(event)}
-              role="search"
-        >
-            <label htmlFor="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Сountry search..." autoFocus required autoComplete="off"/>
-            <button type="submit">Go</button>
-        </FormBox>
-    )
+  return (
+    <FormBox onSubmit={(event) => handleSubmitEvent(event)} role="search">
+      <label htmlFor="search">Search for stuff</label>
+      <input
+        id="search"
+        type="search"
+        placeholder={localization.searchField.placeholder}
+        autoFocus
+        required
+        autoComplete="off"
+        value={searchQuery}
+        onChange={(e) => dispatch(filterCountries(e.target.value))}
+      />
+      <button type="submit">{localization.searchBtn.text}</button>
+    </FormBox>
+  );
 };
 
 export default Search;

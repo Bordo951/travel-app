@@ -21,6 +21,41 @@ const GridContainer = styled.div`
     background-position: center;
   }
   
+  a {
+    position: relative;
+    display: block;
+    height: 98%;
+    text-decoration: none;
+    
+    p {
+      color: #fff;
+      text-shadow: 0 0 2px #fff, 
+        -1px -1px 0 rgb(40, 42, 34), 
+        -2px -2px 1px rgb(40, 42, 34), 
+        -2px -2px 2px rgb(40, 42, 34);
+    }
+  }
+  
+  a:before {
+    opacity: 0;
+    position: absolute;
+    content: '';    
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.7)),to(rgba(2,1,1,.05)));
+    background: -o-linear-gradient(bottom,rgba(0,0,0,.7),rgba(2,1,1,.05));
+    background: linear-gradient(0deg,rgba(0,0,0,.7),rgba(2,1,1,.05));
+    transition: .7s;
+  }
+  
+  a:hover:before {
+    opacity: 1;
+    background: -webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.7)),to(rgba(2,1,1,.05)));
+    background: -o-linear-gradient(bottom,rgba(0,0,0,.7),rgba(2,1,1,.05));
+    background: linear-gradient(0deg,rgba(0,0,0,.7),rgba(2,1,1,.05));
+    transition: .7s;
+  }
+  
   div[data-index='0'] {
     grid-area: 1 / 1 / span 2 / span 4;
   }
@@ -62,6 +97,18 @@ const GridContainer = styled.div`
   }  
 `;
 
+const Country = styled.p`
+  margin: 5px 10px 0;  
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 26px;  
+`;
+
+const Capital = styled.p`
+  margin: 0 10px;
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 18px;
+`;
+
 const СountriesBlock: React.FC = () => {
   const countries = useSelector(getFilteredCountries);
   console.log(countries);
@@ -75,7 +122,8 @@ const СountriesBlock: React.FC = () => {
         {countries.map((el, index) => (
           <div key={el.id} data-index={index} style={{backgroundImage: "url(" + el.imageUrl + ")"}}>
             <NavLink to={`/country/${el.id}`}>
-              {el.name}
+              <Country>{el.name}</Country>
+              <Capital>{el.capital}</Capital>
             </NavLink>
           </div>
         ))}

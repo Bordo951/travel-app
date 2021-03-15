@@ -1,19 +1,24 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getErrorMessage, userLogIn } from "../redux/authSlice";
+import { clearAuthErrors, getLogInErrorMessage, userLogIn } from "../redux/authSlice";
 import { Form } from "../components/auth/Form";
 import { Title } from "../components/auth/Title";
 import { Button } from "../components/auth/Button";
-import { ErrorMessage } from "../components/auth/ErrorMessage";
+import { CommonError } from "../components/auth/ErrorMessage";
 import { FieldWrapper, Input, Label } from "../components/auth/TextField";
 import { getAuthLocalization } from "../redux/localizationSlice";
 
 export const LogIn: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const error = useSelector(getErrorMessage);
+  const error = useSelector(getLogInErrorMessage);
   const localization = useSelector(getAuthLocalization);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearAuthErrors());
+  }, [dispatch]);
+
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(userLogIn(email, password));
@@ -39,7 +44,7 @@ export const LogIn: FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></Input>
       </FieldWrapper>
-      <ErrorMessage>{error} </ErrorMessage>
+      <CommonError>{error} </CommonError>
       <Button>{localization.buttons.logIn}</Button>
     </Form>
   );

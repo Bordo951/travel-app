@@ -1,10 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getErrorMessage, userSignUp } from "../redux/authSlice";
+import { clearAuthErrors, getSignUpErrors, userSignUp } from "../redux/authSlice";
 import { Form } from "../components/auth/Form";
 import { Title } from "../components/auth/Title";
 import { Button } from "../components/auth/Button";
-import { ErrorMessage } from "../components/auth/ErrorMessage";
+import { InputError } from "../components/auth/ErrorMessage";
 import { FieldWrapper, Input, Label } from "../components/auth/TextField";
 import { getAuthLocalization } from "../redux/localizationSlice";
 
@@ -12,9 +12,14 @@ export const SignUp: FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const error = useSelector(getErrorMessage);
+  const errors = useSelector(getSignUpErrors);
   const localization = useSelector(getAuthLocalization);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearAuthErrors());
+  }, [dispatch]);
+
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(userSignUp({ email, name, password }));
@@ -39,6 +44,7 @@ export const SignUp: FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         ></Input>
+        <InputError>{errors.email}</InputError>
       </FieldWrapper>
       <FieldWrapper>
         <Label>{localization.inputs.password.text}</Label>
@@ -48,8 +54,8 @@ export const SignUp: FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></Input>
+        <InputError>{errors.password}</InputError>
       </FieldWrapper>
-      <ErrorMessage>{error}</ErrorMessage>
       <Button>{localization.buttons.signUp}</Button>
     </Form>
   );

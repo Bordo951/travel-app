@@ -68,6 +68,9 @@ const LogOut = styled.div`
     color: #fff;
     background-color: #df5900;
   }
+  @media (max-width: 576px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const UserName = styled.div`

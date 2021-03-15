@@ -67,6 +67,10 @@ const FormBox = styled.form`
     width: 1px;
     overflow: hidden;
   }
+  
+  @media (max-width: 992px) {
+    width: 95%;
+  }
 `;
 
 const Search: React.FC = () => {

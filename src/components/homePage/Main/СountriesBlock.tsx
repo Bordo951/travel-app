@@ -95,6 +95,10 @@ const GridContainer = styled.div`
   div[data-index='9'] {
     grid-area: 7 / 5 / span 2 / span 4;
   }  
+  
+  @media (max-width: 992px) {
+    max-width: 95%;
+  }
 `;
 
 const Country = styled.p`

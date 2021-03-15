@@ -6,7 +6,7 @@ import { getHomePageLocalization } from "../../../redux/localizationSlice";
 
 const FormBox = styled.form`
   position: relative;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   //background: #57bd84;
   //border: 2px solid rgba(223, 89, 0, .5);

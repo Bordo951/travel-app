@@ -99,6 +99,95 @@ const GridContainer = styled.div`
   @media (max-width: 992px) {
     max-width: 95%;
   }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(6, 1fr);
+    
+    div[data-index='0'] {
+    grid-area: 1 / 1 / span 2 / span 3;
+    }
+  
+    div[data-index='1'] {
+      grid-area: 1 / 4 / span 2 / span 3;
+    }
+    
+    div[data-index='2'] {
+    grid-area: 3 / 1 / span 2 / span 2;
+    }
+  
+    div[data-index='3'] {
+      grid-area: 3 / 3 / span 2 / span 2; 
+    }
+    
+    div[data-index='4'] {
+      grid-area: 3 / 5 / span 2 / span 2;
+    }
+    
+    div[data-index='5'] {
+    grid-area: 5 / 1 / span 2 / span 3;
+    }
+  
+    div[data-index='6'] {
+      grid-area: 5 / 4 / span 2 / span 3;
+    }
+    
+    div[data-index='7'] {
+      grid-area: 7 / 1 / span 2 / span 2;
+    }
+    
+    div[data-index='8'] {
+      grid-area: 7 / 3 / span 2 / span 2;
+    }
+    
+    div[data-index='9'] {
+      grid-area: 7 / 5 / span 2 / span 2;
+    }  
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, 200px);
+    
+    div[data-index='0'] {
+    grid-area: 1 / 1 / span 1 / span 1;
+    }
+  
+    div[data-index='1'] {
+      grid-area: 2 / 1 / span 1 / span 1;
+    }
+    
+    div[data-index='2'] {
+    grid-area: 3 / 1 / span 1 / span 1;
+    }
+  
+    div[data-index='3'] {
+      grid-area: 4 / 1 / span 1 / span 1; 
+    }
+    
+    div[data-index='4'] {
+      grid-area: 5 / 1 / span 1 / span 1;
+    }
+    
+    div[data-index='5'] {
+    grid-area: 6 / 1 / span 1 / span 1;
+    }
+  
+    div[data-index='6'] {
+      grid-area: 7 / 1 / span 1 / span 1;
+    }
+    
+    div[data-index='7'] {
+      grid-area: 8 / 1 / span 1 / span 1;
+    }
+    
+    div[data-index='8'] {
+      grid-area: 9 / 1 / span 1 / span 1;
+    }
+    
+    div[data-index='9'] {
+      grid-area: 10 / 1 / span 1 / span 1;
+    }  
+  }
 `;
 
 const Country = styled.p`

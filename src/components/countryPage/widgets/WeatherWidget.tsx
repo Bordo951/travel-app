@@ -71,7 +71,6 @@ const WeatherWidget: React.FC = () => {
   const error = useSelector(getErrorMessage);
   const localization = useSelector(getCountryPageLocalization);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchWeatherData());
   }, [dispatch, capitalName]);

@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getCountryInfo } from "../../redux/countrySlice";
 
-const InfoInner = styled.section`
-  width: 83%;
-`;
+const InfoInner = styled.section``;
 
 const InfoCountry: React.FC = () => {
   const countryInfo = useSelector(getCountryInfo);

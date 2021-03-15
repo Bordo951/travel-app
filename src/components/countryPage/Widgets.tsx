@@ -9,11 +9,9 @@ const WidgetsItems = styled.div<{ visible: boolean }>`
   top: calc(40vh + 150px);
   right: 0; */
   width: 260px;
-  margin-left: 10px;
+  margin-left: 25px;
   transition: all 0.5s ease;
   /* ${(props) => (props.visible ? "margin-right: 0;" : "margin-right: -260px;")} */
-  //position: absolute; //@toDo: not sure that we need it
-  //right: 2%; //@toDo: not sure that we need it
 `;
 // eslint-disable-next-line
 const WidgetsShowBtn = styled.button`
@@ -63,11 +61,11 @@ const Widgets: React.FC = () => {
           <WeatherWidget />
         </WidgetsItem>
         <WidgetsItem>
-          <i className="fas fa-euro-sign"></i>
-          <CurrencyWidget />
+          <DateAndTimeWidget />
         </WidgetsItem>
         <WidgetsItem>
-          <DateAndTimeWidget />
+          {/* <i className="fas fa-euro-sign"></i> */}
+          <CurrencyWidget />
         </WidgetsItem>
       </WidgetsItems>
     </div>

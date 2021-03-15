@@ -15,7 +15,6 @@ import { getCapitalCoordinates, getCapitalName, getIsoCode } from "../../redux/c
 import { getLanguage } from "../../redux/localizationSlice";
 
 const MapInner = styled.div`
-  width: 83%;
   margin-bottom: 100px;
 `;
 

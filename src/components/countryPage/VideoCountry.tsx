@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { getvideoUrl } from "../../redux/countrySlice";
 
 const VideoCountryInner = styled.div`
-  width: 83%;
   height: 500px;
   margin-bottom: 100px; // мб заменить
+  color: #181818;
 `;
 
 const VideoOfCountry: React.FC = () => {

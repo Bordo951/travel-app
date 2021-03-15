@@ -1,5 +1,4 @@
 import React from "react";
-
 import СountriesBlock from "../components/homePage/Main/СountriesBlock";
 import Search from "../components/homePage/Main/Search";
 import styled from "styled-components";

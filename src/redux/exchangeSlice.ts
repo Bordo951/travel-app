@@ -3,7 +3,10 @@ import { AppDispatch, AppState } from "./store";
 
 //types
 type ExchangeType = {
-  convertedCurrency: string;
+  countryCurrency: number;
+  currencyInUSD: number;
+  currencyInEUR: number;
+  currencyInRUB: number;
 };
 
 type RequestStatus = "idle" | "loading" | "succeeded" | "failed";
@@ -48,8 +51,8 @@ export const exchangeReducer = (
 };
 //thunk
 export const fetchExchangeData = () => async (dispatch: AppDispatch, getState: () => AppState) => {
-  const countryData = getState().country.entity;
-  if (countryData === null) return;
+  const countryCurrency = getState().country.entity?.currency;
+  if (countryCurrency === null) return;
   const apiKey = "1803a5ed454af65a9faa4cf6d9f9d5c7";
   const queryParams = {
     params: {
@@ -61,8 +64,18 @@ export const fetchExchangeData = () => async (dispatch: AppDispatch, getState: (
   dispatch(setRequestStatus("loading"));
   try {
     const { data } = await axios.get(url, queryParams);
+    let countryCurrencyInEUR = 0;
+
+    for (let item in data.rates) {
+      if (item === countryCurrency) {
+        countryCurrencyInEUR = 1 / data.rates[item];
+      }
+    }
     const exchange: ExchangeType = {
-      convertedCurrency: data.rates,
+      countryCurrency: countryCurrencyInEUR,
+      currencyInUSD: countryCurrencyInEUR * data.rates.USD,
+      currencyInEUR: countryCurrencyInEUR * data.rates.EUR,
+      currencyInRUB: countryCurrencyInEUR * data.rates.RUB,
     };
     dispatch(setExchangeData(exchange));
   } catch (error) {

@@ -15,6 +15,8 @@ import { SignUp } from "./pages/SingUp";
 import { checkUser, getUserName } from "./redux/authSlice";
 import { LogIn } from "./pages/LogIn";
 
+import ScrollTop from "./components/ScrollTop";
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -47,6 +49,7 @@ const App: React.FC = () => {
   }, [dispatch]);
   return (
     <HashRouter>
+      <ScrollTop />
       <GlobalStyle />
       <Header />
       <Switch>

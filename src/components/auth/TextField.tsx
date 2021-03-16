@@ -4,6 +4,7 @@ export const FieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 34px;
 `;
 
 export const Label = styled.label`
@@ -21,7 +22,6 @@ export const Input = styled.input`
   box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
   padding: 16px;
-  margin-bottom: 34px;
   outline: none;
   &:focus {
     box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04), 0 0 0 2px #756f86;

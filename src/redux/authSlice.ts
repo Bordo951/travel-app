@@ -18,7 +18,13 @@ type RequestStatus = "idle" | "loading" | "succeeded" | "failed";
 export type AuthState = {
   user: UserType;
   status: RequestStatus;
-  error: string;
+  signUpErrors: {
+    email: string;
+    password: string;
+  };
+  logInError: {
+    msg: string;
+  };
 };
 
 //initial state
@@ -28,7 +34,13 @@ const initState: AuthState = {
     token: "",
   },
   status: "idle",
-  error: "",
+  signUpErrors: {
+    email: "",
+    password: "",
+  },
+  logInError: {
+    msg: "",
+  },
 };
 
 // reducer
@@ -41,26 +53,71 @@ export const authReducer = (state: AuthState = initState, action: AuthActions): 
           token: action.payload.token,
         },
         status: "succeeded",
-        error: "",
+        signUpErrors: {
+          email: "",
+          password: "",
+        },
+        logInError: {
+          msg: "",
+        },
       };
     case "auth/clearUserData":
       return {
-        ...state,
+        status: "idle",
         user: {
           name: "",
           token: "",
         },
+        signUpErrors: {
+          email: "",
+          password: "",
+        },
+        logInError: {
+          msg: "",
+        },
       };
     case "auth/setRequestStatus":
       return { ...state, status: action.payload };
-    case "auth/setErrorMessage":
+    case "auth/setLogInErrorMessage":
       return {
         user: {
           token: "",
           name: "",
         },
         status: "failed",
-        error: action.payload,
+        signUpErrors: {
+          email: "",
+          password: "",
+        },
+        logInError: {
+          msg: action.payload,
+        },
+      };
+    case "auth/setSignUpErrors":
+      return {
+        user: {
+          token: "",
+          name: "",
+        },
+        status: "failed",
+        signUpErrors: {
+          email: action.payload.email,
+          password: action.payload.password,
+        },
+        logInError: {
+          msg: "",
+        },
+      };
+    case "auth/clearAuthErrors":
+      return {
+        ...state,
+        signUpErrors: {
+          email: "",
+          password: "",
+        },
+        logInError: {
+          msg: "",
+        },
       };
     default:
       return state;
@@ -84,7 +141,8 @@ export const userSignUp = ({ email, name, password }: SignUpType) => async (
     dispatch(setUserData(data.user.name, data.token));
     localStorage.setItem("TA-34-token", data.token);
   } catch (error) {
-    dispatch(setErrorMessage(error.response.data.msg));
+    const { email, password } = error.response.data.errors;
+    dispatch(setSignUpErrors(email, password));
   }
 };
 
@@ -103,7 +161,7 @@ export const userLogIn = (email: string, password: string) => async (
     dispatch(setUserData(data.user.name, data.token));
     localStorage.setItem("TA-34-token", data.token);
   } catch (error) {
-    dispatch(setErrorMessage(error.response.data.msg));
+    dispatch(setLogInErrorMessage(error.response.data.msg));
   }
 };
 
@@ -123,7 +181,8 @@ export const checkUser = () => async (dispatch: AppDispatch, getState: () => App
     const { data } = await axios.get(url, { headers });
     dispatch(setUserData(data.name, token));
   } catch (error) {
-    dispatch(setErrorMessage(error.message));
+    dispatch(clearUserData());
+    localStorage.removeItem("TA-34-token");
   }
 };
 
@@ -136,16 +195,24 @@ const clearUserData = () => ({ type: "auth/clearUserData" } as const);
 const setRequestStatus = (status: RequestStatus) =>
   ({ type: "auth/setRequestStatus", payload: status } as const);
 
-const setErrorMessage = (message: string) =>
-  ({ type: "auth/setErrorMessage", payload: message } as const);
+const setLogInErrorMessage = (message: string) =>
+  ({ type: "auth/setLogInErrorMessage", payload: message } as const);
+
+const setSignUpErrors = (email: string, password: string) =>
+  ({ type: "auth/setSignUpErrors", payload: { email, password } } as const);
+
+export const clearAuthErrors = () => ({ type: "auth/clearAuthErrors" } as const);
 
 export type AuthActions =
   | ReturnType<typeof setUserData>
   | ReturnType<typeof clearUserData>
   | ReturnType<typeof setRequestStatus>
-  | ReturnType<typeof setErrorMessage>;
+  | ReturnType<typeof setLogInErrorMessage>
+  | ReturnType<typeof setSignUpErrors>
+  | ReturnType<typeof clearAuthErrors>;
 
 //selectors
-export const getErrorMessage = (state: AppState) => state.auth.error;
+export const getLogInErrorMessage = (state: AppState) => state.auth.logInError.msg;
+export const getSignUpErrors = (state: AppState) => state.auth.signUpErrors;
 export const getRequestStatus = (state: AppState) => state.auth.status;
 export const getUserName = (state: AppState) => state.auth.user.name;

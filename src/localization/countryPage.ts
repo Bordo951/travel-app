@@ -11,6 +11,11 @@ const en: CountryPageLocalization = {
     wind: "Wind",
     windUnits: "m/s",
   },
+  exchange: {
+    usd: "USD",
+    eur: "EUR",
+    rub: "RUB",
+  },
 };
 const ru: CountryPageLocalization = {
   tabs: {
@@ -23,6 +28,11 @@ const ru: CountryPageLocalization = {
     wind: "Ветер",
     windUnits: "м/с",
   },
+  exchange: {
+    usd: "Доллар США",
+    eur: "Евро",
+    rub: "Рубль",
+  },
 };
 const de: CountryPageLocalization = {
   tabs: {
@@ -34,6 +44,11 @@ const de: CountryPageLocalization = {
   weather: {
     wind: "Wind",
     windUnits: "m/s",
+  },
+  exchange: {
+    usd: "USD",
+    eur: "EUR",
+    rub: "RUB",
   },
 };
 

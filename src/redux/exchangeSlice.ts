@@ -53,29 +53,29 @@ export const exchangeReducer = (
 export const fetchExchangeData = () => async (dispatch: AppDispatch, getState: () => AppState) => {
   const countryCurrency = getState().country.entity?.currency;
   if (countryCurrency === null) return;
-  const apiKey = "1803a5ed454af65a9faa4cf6d9f9d5c7";
+  // const apiKey = "1803a5ed454af65a9faa4cf6d9f9d5c7";
+  const apiKey = "4d06e18dd6f043699b9836cadc00c9c8";
   const queryParams = {
     params: {
-      access_key: apiKey,
-      // symbols: "GBP,JPY,EUR",
+      app_id: apiKey,
     },
   };
-  const url = `http://data.fixer.io/api/latest?`;
+  // const url = `http://data.fixer.io/api/latest`;
+  const url = `https://openexchangerates.org/api/latest.json`;
   dispatch(setRequestStatus("loading"));
   try {
     const { data } = await axios.get(url, queryParams);
-    let countryCurrencyInEUR = 0;
-
+    let countryCurrencyInUSD = 0;
     for (let item in data.rates) {
       if (item === countryCurrency) {
-        countryCurrencyInEUR = 1 / data.rates[item];
+        countryCurrencyInUSD = 1 / data.rates[item];
       }
     }
     const exchange: ExchangeType = {
-      countryCurrency: countryCurrencyInEUR,
-      currencyInUSD: countryCurrencyInEUR * data.rates.USD,
-      currencyInEUR: countryCurrencyInEUR * data.rates.EUR,
-      currencyInRUB: countryCurrencyInEUR * data.rates.RUB,
+      countryCurrency: countryCurrencyInUSD,
+      currencyInUSD: countryCurrencyInUSD * data.rates.USD,
+      currencyInEUR: countryCurrencyInUSD * data.rates.EUR,
+      currencyInRUB: countryCurrencyInUSD * data.rates.RUB,
     };
     dispatch(setExchangeData(exchange));
   } catch (error) {

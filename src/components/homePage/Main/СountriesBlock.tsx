@@ -7,6 +7,7 @@ import { getLanguage } from "../../../redux/localizationSlice";
 import styled from "styled-components";
 
 const GridContainer = styled.div`
+  padding: 10px 0;
   max-width: 80%;
   margin: 0 auto;
   width: 100%;
@@ -204,7 +205,6 @@ const Capital = styled.p`
 
 const СountriesBlock: React.FC = () => {
   const countries = useSelector(getFilteredCountries);
-  console.log(countries);
   const lang = useSelector(getLanguage);
   const dispatch = useDispatch();
   useEffect(() => {

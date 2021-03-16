@@ -18,9 +18,12 @@ export type CountryPageLocalization = {
     windUnits: string;
   };
   exchange: {
-    usd: string;
-    eur: string;
-    rub: string;
+    USD: string;
+    EUR: string;
+    RUB: string;
+    BYN: string;
+    UAH: string;
+    NOK: string;
   };
 };
 

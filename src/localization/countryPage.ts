@@ -12,9 +12,12 @@ const en: CountryPageLocalization = {
     windUnits: "m/s",
   },
   exchange: {
-    usd: "USD",
-    eur: "EUR",
-    rub: "RUB",
+    USD: "USD",
+    EUR: "EUR",
+    RUB: "RUB",
+    BYN: "BYN",
+    UAH: "UAH",
+    NOK: "NOK",
   },
 };
 const ru: CountryPageLocalization = {
@@ -29,9 +32,12 @@ const ru: CountryPageLocalization = {
     windUnits: "м/с",
   },
   exchange: {
-    usd: "Доллар США",
-    eur: "Евро",
-    rub: "Рубль",
+    USD: "Доллар США",
+    EUR: "Евро",
+    RUB: "Рубль",
+    BYN: "Белорусский рубль",
+    UAH: "Гривна",
+    NOK: "Крона",
   },
 };
 const de: CountryPageLocalization = {
@@ -46,9 +52,12 @@ const de: CountryPageLocalization = {
     windUnits: "m/s",
   },
   exchange: {
-    usd: "USD",
-    eur: "EUR",
-    rub: "RUB",
+    USD: "USD",
+    EUR: "EUR",
+    RUB: "RUB",
+    BYN: "BYN",
+    UAH: "UAH",
+    NOK: "NOK",
   },
 };
 

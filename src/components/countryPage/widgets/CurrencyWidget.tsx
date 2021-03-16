@@ -47,12 +47,10 @@ const CurrencyWidget: React.FC = () => {
   const [currencyUSD, setCurrencyUSD] = useState<number>(0);
   const [currencyEUR, setCurrencyEUR] = useState<number>(0);
   const [currencyRUB, setCurrencyRUB] = useState<number>(0);
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchExchangeData());
   }, [dispatch, currency]);
-
   useEffect(() => {
     setCurrencyUSD(exchange ? exchange.currencyInUSD : 0);
     setCurrencyEUR(exchange ? exchange.currencyInEUR : 0);
@@ -75,13 +73,19 @@ const CurrencyWidget: React.FC = () => {
       {status === "succeeded" && exchange !== null && (
         <CurrencyInner>
           <div>
-            <div>{`${currency}:`}</div>
+            <div>
+              {(currency === "BYN" && localization.exchange.BYN) ||
+                (currency === "RUB" && localization.exchange.RUB) ||
+                (currency === "NOK" && localization.exchange.NOK) ||
+                (currency === "UAH" && localization.exchange.UAH) ||
+                (currency === "EUR" && localization.exchange.EUR)}
+            </div>
             <CurrencyInput value={inputCarrency} type="number" onChange={(e) => handleInput(e)} />
           </div>
           <div>
-            <div>{`${localization.exchange.usd}: ${currencyUSD.toFixed(3)}`}</div>
-            <div>{`${localization.exchange.eur}: ${currencyEUR.toFixed(3)}`}</div>
-            <div>{`${localization.exchange.rub}: ${currencyRUB.toFixed(3)}`}</div>
+            <div>{`${localization.exchange.USD}: ${currencyUSD.toFixed(3)}`}</div>
+            <div>{`${localization.exchange.EUR}: ${currencyEUR.toFixed(3)}`}</div>
+            <div>{`${localization.exchange.RUB}: ${currencyRUB.toFixed(3)}`}</div>
           </div>
         </CurrencyInner>
       )}

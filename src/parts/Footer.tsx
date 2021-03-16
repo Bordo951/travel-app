@@ -9,7 +9,7 @@ const FooterWrapper = styled.footer`
   // background-color: #054B6D;
   // border-top: 1px solid #e6e6e6;
   
-  background-image: url('/images/world-footer.png');
+  background-image: url('/images/world-footer.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

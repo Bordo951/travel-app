@@ -3,22 +3,18 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getFooterLocalization } from "../../../redux/localizationSlice";
 
-const TeamBox = styled.div`
-  margin-right: 50px;
-  h3 {
-    margin-bottom: 25px;
-    font-family: "Montserrat-Bold", sans-serif;
-    font-size: 24px;
-    color: #fff;
-  }
+const TeamBox = styled.ul`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  
   img {
     width: 100%;
   }
-  ul {
-    list-style: none;
-  }
   li {
-    margin-bottom: 5px;
+    margin: 0 10px;
     font-family: "Montserrat-Medium", sans-serif;
     font-size: 18px;
   }
@@ -36,32 +32,23 @@ const TeamBox = styled.div`
     display: inline-block;
     color: #fff;
     &:hover {
-      color: #bebebe;
+      color: #DE5900;
     }
   }
   img {
     width: 25px;
     margin-right: 5px;
   }
-
-  @media (max-width: 992px) {
-    h3 {
-      margin: 15px;
-      text-align: center;
-    }
-    ul {
-      max-width: 200px;
-      margin: 0 auto;
-    }
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
   }
 `;
 
 const Team: React.FC = () => {
   const localization = useSelector(getFooterLocalization);
   return (
-    <TeamBox>
-      <h3>{localization.team.title}</h3>
-      <ul>
+      <TeamBox>
         <li>
           <a href="https://github.com/vhoreho" target="_blank" rel="noreferrer">
             <img src="./images/traveler1.svg" alt="traveler1" />
@@ -86,8 +73,7 @@ const Team: React.FC = () => {
             {localization.team.members.mahti}
           </a>
         </li>
-      </ul>
-    </TeamBox>
+      </TeamBox>
   );
 };
 

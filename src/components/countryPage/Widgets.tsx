@@ -45,12 +45,10 @@ const WidgetsShowBtn = styled.button`
       display: inline-block;
     }
   }
-  &:hover .fas {
-    color: #df5900;
-  }
+  &:hover .fas,
   &:focus .fas {
-    outline: 1px solid #979797;
-    /* outline-offset: -2px; */
+    outline: none;
+    color: #df5900;
   }
 `;
 const WidgetsItem = styled.div`

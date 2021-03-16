@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ImageGallery from "react-image-gallery";
 import { useSelector } from "react-redux";
-import "react-image-gallery/styles/css/image-gallery.css";
 import { getPlaces } from "../../redux/countrySlice";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import styled from "styled-components";
 
 const PhotoGalleryInner = styled.div<{ overImage: boolean }>`
@@ -97,6 +97,7 @@ const PhotogalleryOfCountry: React.FC = () => {
     : photogalery2;
   return (
     <PhotoGalleryInner overImage={overImage}>
+      {console.log(places)}
       <ImageGallery
         items={photogalery}
         onMouseOver={() => setOverImage(true)}

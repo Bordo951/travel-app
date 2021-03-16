@@ -1,24 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
-import InfoCountry from "../components/countryPage/InfoCountry";
-import Photogallery from "../components/countryPage/Photogallery";
-import VideoCountry from "../components/countryPage/VideoCountry";
-import Map from "../components/countryPage/Map";
-import Widgets from "../components/countryPage/Widgets";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
-import { animateScroll as scroll } from "react-scroll";
-
-import styled from "styled-components";
-import "../fonts/fonts.css";
 import { useDispatch } from "react-redux";
+import { getCountryPageLocalization, getLanguage } from "../redux/localizationSlice";
 import {
   fetchCountryData,
   getCapitalName,
   getCountryName,
   getImageUrl,
 } from "../redux/countrySlice";
-import { getCountryPageLocalization, getLanguage } from "../redux/localizationSlice";
+
+import { InfoCountry, Photogallery, VideoCountry, Map, Widgets } from "../components/countryPage";
+
+import { animateScroll as scroll } from "react-scroll";
+import styled from "styled-components";
+import "../fonts/fonts.css";
 
 const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
@@ -127,20 +123,6 @@ const Content = styled.div`
 const TabContent = styled.div`
   flex: 1;
 `;
-// @media (max-width: 1199.98px) {
-//   max-width: 992px;
-// }
-
-// @media (max-width: 991.98px) {
-//   max-width: 768px;
-// }
-
-// @media (max-width: 767.98px) {
-//   max-width: 576px;
-// }
-
-// @media (max-width: 575.98px) {
-// }
 interface ICountryProps {
   id: string;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 import { getvideoUrl } from "../../redux/countrySlice";
+import styled from "styled-components";
 
 const VideoCountryInner = styled.div`
   height: 500px;

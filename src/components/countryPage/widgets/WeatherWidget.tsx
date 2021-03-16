@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import { getCapitalName } from "../../../redux/countrySlice";
 import { getCountryPageLocalization } from "../../../redux/localizationSlice";
+import styled from "styled-components";
 import {
   fetchWeatherData,
   getErrorMessage,

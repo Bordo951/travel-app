@@ -29,7 +29,7 @@ const CurrencyInput = styled.input`
   border: 1px solid #df5900;
   border-radius: 4px;
   padding: 2px;
-  width: 80px;
+  width: 70px;
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -83,9 +83,9 @@ const CurrencyWidget: React.FC = () => {
             <CurrencyInput value={inputCarrency} type="number" onChange={(e) => handleInput(e)} />
           </div>
           <div>
-            <div>{`${localization.exchange.USD}: ${currencyUSD.toFixed(3)}`}</div>
-            <div>{`${localization.exchange.EUR}: ${currencyEUR.toFixed(3)}`}</div>
-            <div>{`${localization.exchange.RUB}: ${currencyRUB.toFixed(3)}`}</div>
+            <div>{`${localization.exchange.USD}: ${currencyUSD.toFixed(2)}`}</div>
+            <div>{`${localization.exchange.EUR}: ${currencyEUR.toFixed(2)}`}</div>
+            <div>{`${localization.exchange.RUB}: ${currencyRUB.toFixed(2)}`}</div>
           </div>
         </CurrencyInner>
       )}

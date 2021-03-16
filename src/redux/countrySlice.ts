@@ -77,6 +77,7 @@ export const fetchCountryData = (id: string) => async (
   dispatch(setRequestStatus("loading"));
   try {
     const { data } = await axios.get(url, queryParams);
+    console.log(data);
     const country: CountryType = {
       id: data.id,
       name: data.name,

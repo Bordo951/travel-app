@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 import { getLanguage } from "../../../redux/localizationSlice";
 import { getTimezone } from "../../../redux/weatherSlice";
+import styled from "styled-components";
 
 const Inner = styled.div`
   text-align: center;

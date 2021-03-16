@@ -4,7 +4,7 @@ import thunk, { ThunkDispatch } from "redux-thunk";
 import { AuthActions, authReducer, AuthState } from "./authSlice";
 import { CountriesActions, countriesReducer, CountriesState } from "./countriesSlice";
 import { CountryActions, countryReducer, CountryState } from "./countrySlice";
-import { ExchangeActions, exchangeReducer, ExchangeState } from "./exchangeSlice"; //f
+import { ExchangeActions, exchangeReducer, ExchangeState } from "./exchangeSlice";
 import { LocalizationActions, LocalizationReducer, LocalizationState } from "./localizationSlice";
 import { WeatherActions, weatherReducer, WeatherState } from "./weatherSlice";
 
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   weather: weatherReducer,
   localization: LocalizationReducer,
   auth: authReducer,
-  exchange: exchangeReducer, //f
+  exchange: exchangeReducer,
 });
 
 export const store: Store<AppState, AppActions> & {
@@ -29,7 +29,7 @@ export type AppState = {
   weather: WeatherState;
   localization: LocalizationState;
   auth: AuthState;
-  exchange: ExchangeState; //f
+  exchange: ExchangeState;
 };
 
 export type AppActions =
@@ -38,6 +38,6 @@ export type AppActions =
   | WeatherActions
   | LocalizationActions
   | AuthActions
-  | ExchangeActions; //f
+  | ExchangeActions;
 
 export type AppDispatch = ThunkDispatch<AppState, unknown, AppActions>;

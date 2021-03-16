@@ -109,7 +109,7 @@ export const getFilteredCountries = (state: AppState) => {
         el.capital.toLowerCase().includes(searchQuery) ||
         el.name.toLowerCase().includes(searchQuery)
     )
-    .slice(0, 8);
+    .slice(0, 10);
 };
 
 export const getSearchQuery = (state: AppState) => state.countries.searchQuery;

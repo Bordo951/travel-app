@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getCountryInfo } from "../../redux/countrySlice";
 
-const InfoInner = styled.section``;
+const InfoInner = styled.section`
+  margin-bottom: 60px;
+`;
 
 const InfoCountry: React.FC = () => {
   const countryInfo = useSelector(getCountryInfo);

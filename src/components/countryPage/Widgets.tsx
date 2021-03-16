@@ -5,40 +5,63 @@ import DateAndTimeWidget from "./widgets/DateAndTimeWidget";
 import styled from "styled-components";
 
 const WidgetsItems = styled.div<{ visible: boolean }>`
-  /* position: fixed;
-  top: calc(40vh + 150px);
-  right: 0; */
   width: 260px;
   margin-left: 25px;
   transition: all 0.5s ease;
-  /* ${(props) => (props.visible ? "margin-right: 0;" : "margin-right: -260px;")} */
+  box-shadow: 0 0 20px 2px rgb(0 0 0 / 30%);
+  margin-bottom: 30px;
+  border-radius: 6px;
+  @media (max-width: 767.98px) {
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+    right: 0;
+    ${(props) => (props.visible ? "margin-right: 0;" : "margin-right: -260px;")}
+  }
 `;
-// eslint-disable-next-line
 const WidgetsShowBtn = styled.button`
-  width: 32px;
-  height: 70px;
-  margin-left: -32px;
+  width: 50px;
+  height: 44px;
+  margin-left: -50px;
+  position: absolute;
   cursor: pointer;
-  font-size: 40px;
   transition: color 0.2s ease;
-  color: #333333;
-  background-color: #ececec;
+  color: #929292;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .fas {
+    padding: 0;
+    margin: 0;
+    font-size: 50px;
     color: inherit;
+    display: none;
+    line-height: 50px;
+    border-radius: 8px;
+    @media (max-width: 767.98px) {
+      display: inline-block;
+    }
   }
-  &:hover {
-    color: #fff;
-    background-color: #df5900;
+  &:hover .fas {
+    color: #df5900;
   }
-  &:focus {
-    outline: 2px solid #979797;
-    outline-offset: -2px;
+  &:focus .fas {
+    outline: 1px solid #979797;
+    /* outline-offset: -2px; */
   }
 `;
 const WidgetsItem = styled.div`
-  box-shadow: 0 0 20px 2px rgb(0 0 0 / 30%);
-  border-radius: 6px;
-  margin-bottom: 30px;
+  /* box-shadow: 0 0 20px 2px rgb(0 0 0 / 30%); */
+  /* border-radius: 6px; */
+  border-bottom: 2px solid #ffc343;
+  /* margin-bottom: 30px; */
+  &:last-of-type {
+    border-radius: 6px;
+    border-width: 6px;
+  }
   .fas {
     font-size: 45px;
   }
@@ -50,13 +73,13 @@ const Widgets: React.FC = () => {
   return (
     <div>
       <WidgetsItems visible={widgetsVisibility}>
-        {/* <WidgetsShowBtn onClick={() => setWidgetsVisibility(!widgetsVisibility)}>
+        <WidgetsShowBtn onClick={() => setWidgetsVisibility(!widgetsVisibility)}>
           {widgetsVisibility ? (
-            <i className="fas fa-chevron-right"></i>
+            <i className="fas fa-caret-square-right"></i>
           ) : (
-            <i className="fas fa-chevron-left"></i>
+            <i className="fas fa-caret-square-left"></i>
           )}
-        </WidgetsShowBtn> */}
+        </WidgetsShowBtn>
         <WidgetsItem>
           <WeatherWidget />
         </WidgetsItem>
@@ -64,7 +87,6 @@ const Widgets: React.FC = () => {
           <DateAndTimeWidget />
         </WidgetsItem>
         <WidgetsItem>
-          {/* <i className="fas fa-euro-sign"></i> */}
           <CurrencyWidget />
         </WidgetsItem>
       </WidgetsItems>

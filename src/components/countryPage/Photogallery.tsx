@@ -9,9 +9,25 @@ const PhotoGalleryInner = styled.div<{ overImage: boolean }>`
   margin-bottom: 60px;
   border: 1px solid #e0e0e0;
   color: #272727;
+  @media (max-width: 400px) {
+    width: 90%;
+    margin: 0 auto;
+  }
   .image-gallery-content .image-gallery-slides {
     height: 500px;
     width: calc(100% + 1px);
+    @media (max-width: 1199.98px) {
+      height: 470px;
+    }
+    @media (max-width: 700px) {
+      height: 400px;
+    }
+    @media (max-width: 575.98px) {
+      height: 300px;
+    }
+    @media (max-width: 400px) {
+      height: 200px;
+    }
   }
   .image-gallery-content.fullscreen .image-gallery-slides {
     height: 100%;
@@ -36,6 +52,9 @@ const PhotoGalleryInner = styled.div<{ overImage: boolean }>`
   }
   .image-gallery-thumbnail {
     cursor: pointer;
+    @media (max-width: 400px) {
+      display: none;
+    }
   }
   .image-gallery-thumbnail.active,
   .image-gallery-thumbnail:hover {

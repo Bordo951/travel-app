@@ -58,21 +58,6 @@ const Container = styled.div`
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-
-  @media (max-width: 1199.98px) {
-    max-width: 992px;
-  }
-
-  @media (max-width: 991.98px) {
-    max-width: 768px;
-  }
-
-  @media (max-width: 767.98px) {
-    max-width: 576px;
-  }
-
-  @media (max-width: 575.98px) {
-  }
 `;
 const CountryPageTabs = styled.div`
   background-color: #ececec;
@@ -113,6 +98,26 @@ const CountryPageTab = styled.button`
     background-color: #df5900;
     border-color: #df5900;
   }
+  @media (max-width: 991.98px) {
+    width: 50%;
+    &:nth-child(3) {
+      border: 1px solid #e0e0e0;
+      border-bottom: none;
+    }
+    &:nth-child(4) {
+      border-top: 1px solid #e0e0e0;
+    }
+  }
+  @media (max-width: 575.98px) {
+    width: 100%;
+    &:nth-child(2),
+    &:nth-child(4) {
+      border-left: 1px solid #e0e0e0;
+    }
+    &:nth-child(1) {
+      border-bottom: 1px solid #e0e0e0;
+    }
+  }
 `;
 
 const Content = styled.div`
@@ -122,7 +127,20 @@ const Content = styled.div`
 const TabContent = styled.div`
   flex: 1;
 `;
+// @media (max-width: 1199.98px) {
+//   max-width: 992px;
+// }
 
+// @media (max-width: 991.98px) {
+//   max-width: 768px;
+// }
+
+// @media (max-width: 767.98px) {
+//   max-width: 576px;
+// }
+
+// @media (max-width: 575.98px) {
+// }
 interface ICountryProps {
   id: string;
 }

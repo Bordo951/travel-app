@@ -61,15 +61,18 @@ const Map: React.FC = () => {
               properties={{ iconContent: capital }}
               options={{ preset: "islands#nightStretchyIcon" }}
             />
-            <Polygon
-              geometry={bordersGeo}
-              options={{
-                fillColor: "rgba(216, 51, 73, 0.1)",
-                strokeColor: "rgb(160, 25, 43)",
-                strokeWidth: 1,
-                strokeStyle: "solid",
-              }}
-            />
+            {bordersGeo && (
+              <Polygon
+                geometry={bordersGeo}
+                options={{
+                  fillColor: "rgba(216, 51, 73, 0.1)",
+                  strokeColor: "rgb(160, 25, 43)",
+                  strokeWidth: 1,
+                  strokeStyle: "solid",
+                }}
+              />
+            )}
+
             <FullscreenControl />
             <TypeSelector />
             <ZoomControl />

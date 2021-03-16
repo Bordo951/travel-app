@@ -78,7 +78,9 @@ const CurrencyWidget: React.FC = () => {
                 (currency === "RUB" && localization.exchange.RUB) ||
                 (currency === "NOK" && localization.exchange.NOK) ||
                 (currency === "UAH" && localization.exchange.UAH) ||
-                (currency === "EUR" && localization.exchange.EUR)}
+                (currency === "EUR" && localization.exchange.EUR) ||
+                (currency === "GBP" && localization.exchange.GBP) ||
+                (currency === "CZK" && localization.exchange.CZK)}
             </div>
             <CurrencyInput value={inputCarrency} type="number" onChange={(e) => handleInput(e)} />
           </div>

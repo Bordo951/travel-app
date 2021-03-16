@@ -18,6 +18,8 @@ const en: CountryPageLocalization = {
     BYN: "BYN",
     UAH: "UAH",
     NOK: "NOK",
+    GBP: "GBP",
+    CZK: "CZK",
   },
 };
 const ru: CountryPageLocalization = {
@@ -37,7 +39,9 @@ const ru: CountryPageLocalization = {
     RUB: "Рубль",
     BYN: "Белорусский рубль",
     UAH: "Гривна",
-    NOK: "Крона",
+    NOK: "Норвежская крона",
+    GBP: "Фунт стерлингов",
+    CZK: "Чешская крона",
   },
 };
 const de: CountryPageLocalization = {
@@ -58,6 +62,8 @@ const de: CountryPageLocalization = {
     BYN: "BYN",
     UAH: "UAH",
     NOK: "NOK",
+    GBP: "GBP",
+    CZK: "CZK",
   },
 };
 

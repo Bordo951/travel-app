@@ -24,6 +24,8 @@ export type CountryPageLocalization = {
     BYN: string;
     UAH: string;
     NOK: string;
+    GBP: string;
+    CZK: string;
   };
 };
 

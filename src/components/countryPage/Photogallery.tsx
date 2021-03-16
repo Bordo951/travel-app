@@ -97,7 +97,6 @@ const PhotogalleryOfCountry: React.FC = () => {
     : photogalery2;
   return (
     <PhotoGalleryInner overImage={overImage}>
-      {console.log(places)}
       <ImageGallery
         items={photogalery}
         onMouseOver={() => setOverImage(true)}

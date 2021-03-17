@@ -41,6 +41,9 @@ export type HomePageLocalization = {
   searchBtn: {
     text: string;
   };
+  searchDescription: string;
+  appTitle: string;
+  appDescription: string;
 };
 
 export type HeaderLocalization = {

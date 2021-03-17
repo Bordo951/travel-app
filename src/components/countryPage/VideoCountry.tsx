@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const VideoCountryInner = styled.div`
   height: 500px;
-  margin-bottom: 100px; // мб заменить
+  margin-bottom: 100px;
   color: #181818;
 `;
 

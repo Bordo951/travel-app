@@ -8,6 +8,7 @@ import {
   getCapitalName,
   getCountryName,
   getImageUrl,
+  getRequestStatus,
 } from "../redux/countrySlice";
 
 import { InfoCountry, Photogallery, VideoCountry, Map, Widgets } from "../components/countryPage";
@@ -15,6 +16,7 @@ import { InfoCountry, Photogallery, VideoCountry, Map, Widgets } from "../compon
 import { animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
 import "../fonts/fonts.css";
+import "../css/preloader.css";
 
 const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
@@ -134,11 +136,10 @@ const CountryPage: React.FC<ICountryProps> = () => {
   const imageUrl = useSelector(getImageUrl);
   const localization = useSelector(getCountryPageLocalization);
   const lang = useSelector(getLanguage);
+  const requestStatus = useSelector(getRequestStatus);
   const [tabTitle, setTabTitle] = useState<string>("info");
   const dispatch = useDispatch();
-
   const countryPageElem = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     dispatch(fetchCountryData(CountryProps.id));
   }, [dispatch, lang, CountryProps]);
@@ -152,62 +153,68 @@ const CountryPage: React.FC<ICountryProps> = () => {
   };
   return (
     <div>
-      <section>
-        <CountryPageIntro imageUrl={imageUrl}>
+      {requestStatus === "succeeded" ? (
+        <section>
+          <CountryPageIntro imageUrl={imageUrl}>
+            <Container>
+              <CountryPageHeading>
+                {countryName}
+                <br />
+                <small>{сapitalName}</small>
+              </CountryPageHeading>
+            </Container>
+          </CountryPageIntro>
+          <CountryPageTabs ref={countryPageElem}>
+            <Container>
+              <CountryPageTab
+                onClick={() => handleTab("info")}
+                className={tabTitle === "info" ? "active" : ""}
+              >
+                <i className="fas fa-info"></i>
+                {localization.tabs.info}
+              </CountryPageTab>
+              <CountryPageTab
+                onClick={() => handleTab("gallery")}
+                className={tabTitle === "gallery" ? "active" : ""}
+              >
+                <i className="fas fa-image"></i>
+                {localization.tabs.photo}
+              </CountryPageTab>
+              <CountryPageTab
+                onClick={() => handleTab("video")}
+                className={tabTitle === "video" ? "active" : ""}
+              >
+                <i className="fab fa-youtube"></i>
+                {localization.tabs.video}
+              </CountryPageTab>
+              <CountryPageTab
+                onClick={() => handleTab("map")}
+                className={tabTitle === "map" ? "active" : ""}
+              >
+                <i className="fas fa-map-marker-alt"></i>
+                {localization.tabs.map}
+              </CountryPageTab>
+            </Container>
+          </CountryPageTabs>
           <Container>
-            <CountryPageHeading>
-              {countryName}
-              <br />
-              <small>{сapitalName}</small>
-            </CountryPageHeading>
+            <Content>
+              <TabContent>
+                {tabTitle === "info" ? <InfoCountry /> : ""}
+                {tabTitle === "gallery" ? <Photogallery /> : ""}
+                {tabTitle === "video" ? <VideoCountry /> : ""}
+                {tabTitle === "map" ? <Map /> : ""}
+              </TabContent>
+              <aside>
+                <Widgets />
+              </aside>
+            </Content>
           </Container>
-        </CountryPageIntro>
-        <CountryPageTabs ref={countryPageElem}>
-          <Container>
-            <CountryPageTab
-              onClick={() => handleTab("info")}
-              className={tabTitle === "info" ? "active" : ""}
-            >
-              <i className="fas fa-info"></i>
-              {localization.tabs.info}
-            </CountryPageTab>
-            <CountryPageTab
-              onClick={() => handleTab("gallery")}
-              className={tabTitle === "gallery" ? "active" : ""}
-            >
-              <i className="fas fa-image"></i>
-              {localization.tabs.photo}
-            </CountryPageTab>
-            <CountryPageTab
-              onClick={() => handleTab("video")}
-              className={tabTitle === "video" ? "active" : ""}
-            >
-              <i className="fab fa-youtube"></i>
-              {localization.tabs.video}
-            </CountryPageTab>
-            <CountryPageTab
-              onClick={() => handleTab("map")}
-              className={tabTitle === "map" ? "active" : ""}
-            >
-              <i className="fas fa-map-marker-alt"></i>
-              {localization.tabs.map}
-            </CountryPageTab>
-          </Container>
-        </CountryPageTabs>
-        <Container>
-          <Content>
-            <TabContent>
-              {tabTitle === "info" ? <InfoCountry /> : ""}
-              {tabTitle === "gallery" ? <Photogallery /> : ""}
-              {tabTitle === "video" ? <VideoCountry /> : ""}
-              {tabTitle === "map" ? <Map /> : ""}
-            </TabContent>
-            <aside>
-              <Widgets />
-            </aside>
-          </Content>
-        </Container>
-      </section>
+        </section>
+      ) : (
+        <div className="loader-bg">
+          <div className="loader"></div>
+        </div>
+      )}
     </div>
   );
 };

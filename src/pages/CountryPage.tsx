@@ -14,6 +14,7 @@ import {
 import { InfoCountry, Photogallery, VideoCountry, Map, Widgets } from "../components/countryPage";
 
 import { animateScroll as scroll } from "react-scroll";
+import { Parallax } from "react-parallax";
 import styled from "styled-components";
 import "../fonts/fonts.css";
 import "../css/preloader.css";
@@ -21,16 +22,14 @@ import "../css/preloader.css";
 const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
   height: 60vh;
-  background: #ccc no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  background: no-repeat center center;
   display: flex;
   align-items: center;
   text-transform: uppercase;
   color: #fff;
   position: relative;
-  ${(props) =>
-    props.imageUrl ? `background-image: url(${props.imageUrl}) ;` : "background-color: #ccc"}
+  ${(props) => (props.imageUrl ? "background-color: none ;" : "background-color: #ccc")}
   &:after {
     content: "";
     width: 100%;
@@ -163,15 +162,17 @@ const CountryPage: React.FC<ICountryProps> = () => {
     <div>
       {requestStatus === "succeeded" ? (
         <section>
-          <CountryPageIntro imageUrl={imageUrl}>
-            <Container>
-              <CountryPageHeading>
-                {countryName}
-                <br />
-                <small>{сapitalName}</small>
-              </CountryPageHeading>
-            </Container>
-          </CountryPageIntro>
+          <Parallax bgImage={imageUrl} bgImageAlt="travel" strength={200}>
+            <CountryPageIntro imageUrl={imageUrl}>
+              <Container>
+                <CountryPageHeading>
+                  {countryName}
+                  <br />
+                  <small>{сapitalName}</small>
+                </CountryPageHeading>
+              </Container>
+            </CountryPageIntro>
+          </Parallax>
           <CountryPageTabs ref={countryPageElem}>
             <Container>
               <CountryPageTab

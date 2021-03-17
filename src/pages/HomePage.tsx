@@ -4,7 +4,7 @@ import Search from "../components/homePage/Main/Search";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getHomePageLocalization } from "../redux/localizationSlice";
-
+import { Parallax } from "react-parallax";
 // const MainBox = styled.main`
 //     background-color: rgba(166,166,166, .5);
 // `;
@@ -15,11 +15,11 @@ const SearchWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("/images/world-of-travel.jpg");
-  background-size: cover;
+  /* background-image: url("/images/world-of-travel.jpg"); */
+  /* background-attachment: fixed; */
+  /* background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-
+  background-repeat: no-repeat; */
   h1 {
     font-family: "Montserrat-Bold", sans-serif;
     text-align: center;
@@ -69,13 +69,15 @@ const HomePage: React.FC = () => {
   const localization = useSelector(getHomePageLocalization);
   return (
     <main>
-      <SearchWrapper>
-        <h2>{localization.appTitle}</h2>
-        <h1>Travel App</h1>
-        <p>{localization.appDescription}</p>
-        <h2>{localization.searchDescription}</h2>
-        <Search />
-      </SearchWrapper>
+      <Parallax bgImage="/images/world-of-travel.jpg" bgImageAlt="travel" strength={200}>
+        <SearchWrapper>
+          <h2>{localization.appTitle}</h2>
+          <h1>Travel App</h1>
+          <p>{localization.appDescription}</p>
+          <h2>{localization.searchDescription}</h2>
+          <Search />
+        </SearchWrapper>
+      </Parallax>
       <СountriesBlock />
     </main>
   );

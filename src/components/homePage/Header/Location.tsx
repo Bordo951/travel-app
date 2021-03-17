@@ -25,9 +25,6 @@ const LocationContainer = styled.div`
     
     @media (max-width: 768px) {
         margin: 0 10px;
-    }
-    
-    @media (max-width: 576px) {
         display: none;
     }
 `;

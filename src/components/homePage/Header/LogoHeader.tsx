@@ -14,10 +14,6 @@ const LogoWrapper = styled.div`
   img {
     width: 100%;
   }
-
-  @media (max-width: 576px) {
-    display: none;
-  }
 `;
 
 const LogoHeader: React.FC = () => {

@@ -29,6 +29,7 @@ const SearchWrapper = styled.div`
     @media (max-width: 576px) {
       margin-bottom: 20px;
       line-height: 1;
+      font-size: 3em;
     }
   }
 

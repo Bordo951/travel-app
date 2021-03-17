@@ -23,6 +23,7 @@ const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   height: 60vh;
   background: #ccc no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -60,6 +61,9 @@ const Container = styled.div`
 const CountryPageTabs = styled.div`
   background-color: #ececec;
   margin-bottom: 70px;
+  @media (max-width: 575.98px) {
+    display: flex;
+  }
 `;
 const CountryPageTab = styled.button`
   color: #333333;
@@ -107,7 +111,7 @@ const CountryPageTab = styled.button`
     }
   }
   @media (max-width: 575.98px) {
-    width: 100%;
+    width: 25%;
     &:nth-child(2),
     &:nth-child(4) {
       border-left: 1px solid #e0e0e0;
@@ -117,7 +121,11 @@ const CountryPageTab = styled.button`
     }
   }
 `;
-
+const CountryPageTabText = styled.span`
+  @media (max-width: 575.98px) {
+    display: none;
+  }
+`;
 const Content = styled.div`
   display: flex;
 `;
@@ -171,28 +179,28 @@ const CountryPage: React.FC<ICountryProps> = () => {
                 className={tabTitle === "info" ? "active" : ""}
               >
                 <i className="fas fa-info"></i>
-                {localization.tabs.info}
+                <CountryPageTabText>{localization.tabs.info}</CountryPageTabText>
               </CountryPageTab>
               <CountryPageTab
                 onClick={() => handleTab("gallery")}
                 className={tabTitle === "gallery" ? "active" : ""}
               >
                 <i className="fas fa-image"></i>
-                {localization.tabs.photo}
+                <CountryPageTabText>{localization.tabs.photo}</CountryPageTabText>
               </CountryPageTab>
               <CountryPageTab
                 onClick={() => handleTab("video")}
                 className={tabTitle === "video" ? "active" : ""}
               >
                 <i className="fab fa-youtube"></i>
-                {localization.tabs.video}
+                <CountryPageTabText>{localization.tabs.video}</CountryPageTabText>
               </CountryPageTab>
               <CountryPageTab
                 onClick={() => handleTab("map")}
                 className={tabTitle === "map" ? "active" : ""}
               >
                 <i className="fas fa-map-marker-alt"></i>
-                {localization.tabs.map}
+                <CountryPageTabText>{localization.tabs.map}</CountryPageTabText>
               </CountryPageTab>
             </Container>
           </CountryPageTabs>

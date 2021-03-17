@@ -5,9 +5,6 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getHomePageLocalization } from "../redux/localizationSlice";
 import { Parallax } from "react-parallax";
-// const MainBox = styled.main`
-//     background-color: rgba(166,166,166, .5);
-// `;
 
 const SearchWrapper = styled.div`
   height: 100vh;

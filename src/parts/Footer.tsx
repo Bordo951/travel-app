@@ -21,6 +21,10 @@ const AboutCourse = styled.div`
   color: #fff;
   text-align: center;
   padding: 5px 0;
+  
+  @media (max-width: 992px) {
+    font-size: 14px;
+  }
 `;
 const Container = styled.div`
   max-width: 1200px;
@@ -29,7 +33,7 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   margin: 0 auto;
-  padding: 5px 0;
+  padding: 5px;
 
   @media (max-width: 1200px) {
     max-width: 900px;
@@ -37,15 +41,7 @@ const Container = styled.div`
 
   @media (max-width: 992px) {
     max-width: 700px;
-    flex-direction: column;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 500px;
-  }
-
-  @media (max-width: 576px) {
-    max-width: 400px;
+    justify-content: space-around;
   }
 `;
 

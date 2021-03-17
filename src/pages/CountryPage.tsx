@@ -162,7 +162,7 @@ const CountryPage: React.FC<ICountryProps> = () => {
     <div>
       {requestStatus === "succeeded" ? (
         <section>
-          <Parallax bgImage={imageUrl} bgImageAlt="travel" strength={200}>
+          <Parallax bgImage={imageUrl} bgImageAlt="travel" strength={300}>
             <CountryPageIntro imageUrl={imageUrl}>
               <Container>
                 <CountryPageHeading>

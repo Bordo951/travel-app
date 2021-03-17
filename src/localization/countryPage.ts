@@ -11,6 +11,11 @@ const en: CountryPageLocalization = {
     wind: "Wind",
     windUnits: "m/s",
   },
+  places: {
+    close: "Close",
+    showVoters: "Show voters",
+    voters: "Voters",
+  },
   exchange: {
     USD: "USD",
     EUR: "EUR",
@@ -33,6 +38,11 @@ const ru: CountryPageLocalization = {
     wind: "Ветер",
     windUnits: "м/с",
   },
+  places: {
+    close: "Закрыть",
+    showVoters: "Показать проголосовавших",
+    voters: "Голосовавшие",
+  },
   exchange: {
     USD: "Доллар США",
     EUR: "Евро",
@@ -54,6 +64,11 @@ const de: CountryPageLocalization = {
   weather: {
     wind: "Wind",
     windUnits: "m/s",
+  },
+  places: {
+    close: "Schließen",
+    showVoters: "Wähler zeigen",
+    voters: "Wähler",
   },
   exchange: {
     USD: "USD",

@@ -5,12 +5,14 @@ import { getLanguage, setLanguage } from "../../../redux/localizationSlice";
 
 const LocalizationHeader = styled.div`
   position: relative;
-  display: flex;
-  width: 10em;
-  height: 3em;
-  line-height: 3;
-  background: #363636;
-  overflow: hidden;
+    display: flex;
+    width: 10em;
+    height: 2em;
+    line-height: 2;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+    border-radius: 5px;
+    overflow: hidden;
 
   &::after {
     content: "\\25BC";
@@ -19,7 +21,7 @@ const LocalizationHeader = styled.div`
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: rgba(77, 77, 77, 0.8);
+    background: #032A3D;
     cursor: pointer;
     pointer-events: none;
     -webkit-transition: 0.25s all ease;
@@ -30,6 +32,10 @@ const LocalizationHeader = styled.div`
   &:hover::after {
     color: #df5900;
   }
+  
+  @media (max-width: 768px) {
+        margin: 0 10px;
+    }
 `;
 
 const SelectBox = styled.select`
@@ -49,7 +55,7 @@ const SelectBox = styled.select`
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #363636;
+  background: #054B6D;
   background-image: none;
 
   &::-ms-expand {

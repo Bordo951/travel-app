@@ -6,8 +6,13 @@ import Team from "../components/homePage/Footer/Team";
 import { getFooterLocalization } from "../redux/localizationSlice";
 
 const FooterWrapper = styled.footer`
-  background-color: #272727;
-  border-top: 1px solid #e6e6e6;
+  // background-color: #054B6D;
+  // border-top: 1px solid #e6e6e6;
+  
+  background-image: url('/images/world-footer.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const AboutCourse = styled.div`
@@ -15,17 +20,16 @@ const AboutCourse = styled.div`
   font-size: 16px;
   color: #fff;
   text-align: center;
-  background-color: #000;
-  padding: 10px 35px;
+  padding: 5px 0;
 `;
 const Container = styled.div`
   max-width: 1200px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   margin: 0 auto;
-  padding: 20px 15px;
+  padding: 5px 0;
 
   @media (max-width: 1200px) {
     max-width: 900px;
@@ -44,60 +48,16 @@ const Container = styled.div`
     max-width: 400px;
   }
 `;
-const Content = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 992px) {
-    flex-direction: column;
-  }
-`;
-const About = styled.div`
-  max-width: 400px;
-  margin-right: 50px;
-  h3 {
-    margin-bottom: 25px;
-    font-family: "Montserrat-Bold", sans-serif;
-    font-size: 24px;
-    color: #fff;
-  }
-  p {
-    font-family: "Montserrat-Medium", sans-serif;
-    font-size: 18px;
-    color: #bebebe;
-    text-indent: 1.5em;
-    text-align: justify;
-  }
-
-  @media (max-width: 1200px) {
-    max-width: 300px;
-  }
-
-  @media (max-width: 992px) {
-    flex-direction: column;
-
-    h3 {
-      margin: 15px;
-      text-align: center;
-    }
-  }
-`;
 
 const Footer: React.FC = () => {
   const localization = useSelector(getFooterLocalization);
   return (
     <FooterWrapper>
+        <Team />
       <Container>
         <LogoFooter />
-        <Content>
-          <About>
-            <h3>{localization.app.title}</h3>
-            <p>{localization.app.text} </p>
-          </About>
-          <Team />
-        </Content>
+        <AboutCourse className="copyright">&copy; 2021Q1 The Rolling Scopes School, {localization.copyright}</AboutCourse>
       </Container>
-      <AboutCourse>&copy; 2021Q1 The Rolling Scopes School, {localization.copyright}</AboutCourse>
     </FooterWrapper>
   );
 };

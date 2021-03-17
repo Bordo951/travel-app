@@ -2,8 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 
 const LogoWrapper = styled.div`
-  width: 180px;
-  margin-right: 50px;
+  width: 100px;
+  margin-right: 20px;
   transition: transform .5s;  
   &:hover {
     transform: scale(1.05);

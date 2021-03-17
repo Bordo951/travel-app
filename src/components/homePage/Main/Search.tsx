@@ -19,14 +19,16 @@ const FormBox = styled.form`
     font-size: 1.2rem;
     border: 0;
     color: #2f2f2f;
+    margin-bottom: 50px;
   }
 
   input[type="search"] {
     outline: 0;
     width: 100%;
-    background: #fff;
+    box-shadow: 0px 0px 0px 15px rgb(255 255 255 / 30%);
+    border-radius: 5px;
     //background: #f2be9a;
-    border: 2px solid #df5900;
+    // border: 2px solid #fff;
     padding: 0 1.6rem;
     border-radius: 9px;
     appearance: none;
@@ -84,7 +86,7 @@ const Search: React.FC = () => {
 
   return (
     <FormBox onSubmit={(event) => handleSubmitEvent(event)} role="search">
-      <label htmlFor="search">Search for stuff</label>
+      <label htmlFor="search"></label>
       <input
         id="search"
         type="search"

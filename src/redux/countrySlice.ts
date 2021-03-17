@@ -2,10 +2,18 @@ import axios from "axios";
 import { AppDispatch, AppState } from "./store";
 
 //types
+type RatingType = {
+  _id: string;
+  username: string;
+  rate: number;
+};
+
 type PlaceType = {
   name: string;
   description: string;
   photoUrl: string;
+  placeId: string;
+  rating: RatingType[];
 };
 
 type CountryType = {
@@ -57,6 +65,23 @@ export const countryReducer = (
         status: "failed",
         error: action.payload,
       };
+    case "country/setRating":
+      if (state.entity === null) return state;
+      return {
+        ...state,
+        entity: {
+          ...state.entity,
+          places: state.entity?.places.map((place) => {
+            if (place.placeId === action.payload.placeId) {
+              return {
+                ...place,
+                rating: action.payload.rating,
+              };
+            }
+            return place;
+          }),
+        },
+      };
     default:
       return state;
   }
@@ -95,9 +120,33 @@ export const fetchCountryData = (id: string) => async (
   }
 };
 
+export const placeVote = (placeId: string, rate: number) => async (
+  dispatch: AppDispatch,
+  getState: () => AppState
+) => {
+  const username = getState().auth.user.name;
+  if (username === "") return;
+  const url = `https://vhoreho-task-travel-app.herokuapp.com/places/${placeId}/add`;
+  const url2 = `https://vhoreho-task-travel-app.herokuapp.com/places/${placeId}`;
+  const params = {
+    username,
+    rate,
+  };
+  try {
+    await axios.post(url, params);
+    const { data } = await axios.get(url2);
+    dispatch(setRating(placeId, data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //actions
 const setCountryData = (entity: CountryType) =>
   ({ type: "country/setCountryData", payload: entity } as const);
+
+const setRating = (placeId: string, rating: RatingType[]) =>
+  ({ type: "country/setRating", payload: { placeId, rating } } as const);
 
 const setRequestStatus = (status: RequestStatus) =>
   ({ type: "country/setRequestStatus", payload: status } as const);
@@ -107,12 +156,14 @@ const setErrorMessage = (message: string) =>
 
 export type CountryActions =
   | ReturnType<typeof setCountryData>
+  | ReturnType<typeof setRating>
   | ReturnType<typeof setRequestStatus>
   | ReturnType<typeof setErrorMessage>;
 
 //selectors
 export const getErrorMessage = (state: AppState) => state.country.error;
 export const getRequestStatus = (state: AppState) => state.country.status;
+export const getCountryData = (state: AppState) => state.country.entity;
 export const getCountryName = (state: AppState) => state.country.entity?.name;
 export const getCapitalName = (state: AppState) => state.country.entity?.capital;
 export const getCountryInfo = (state: AppState) => state.country.entity?.description;

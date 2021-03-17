@@ -8,6 +8,7 @@ import {
   getRequestStatus,
 } from "../../../redux/countriesSlice";
 import { getLanguage } from "../../../redux/localizationSlice";
+import { getHomePageLocalization } from "../../../redux/localizationSlice";
 import styled from "styled-components";
 import "../../../css/preloader.css";
 const GridContainer = styled.div`
@@ -219,7 +220,7 @@ const Capital = styled.p`
 
 const EmptyContent = styled.div`
   padding: 50px;
-  
+
   div {
     width: 100px;
     margin: 10px auto 30px;
@@ -227,13 +228,13 @@ const EmptyContent = styled.div`
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    
+
     img {
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
       -webkit-transition-timing-function: ease-out;
       transition-timing-function: ease-out;
-      
+
       -webkit-animation-name: globe-pulse;
       animation-name: globe-pulse;
       -webkit-animation-duration: 5s;
@@ -244,75 +245,74 @@ const EmptyContent = styled.div`
       animation-iteration-count: infinite;
     }
   }
-  
-  p {
-     font-family: "Montserrat-Medium", sans-serif;
-     font-size: 30px;
-     text-align: center;
-     color: #75757E;
-     max-width: 50%;
-     margin: 0 auto;
-     text-align: center;
-     
-     @media (max-width: 992px) {
-        max-width: 80%;
-        font-size: 26px;
-     }
 
-     @media (max-width: 576px) {
-        font-size: 20px;
-     }
+  p {
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #75757e;
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (max-width: 992px) {
+      max-width: 80%;
+      font-size: 26px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 20px;
+    }
   }
-    
+
   @-webkit-keyframes globe-pulse {
     25% {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3);
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
     }
     75% {
-        -webkit-transform: scale(0.8);
-        transform: scale(0.8);
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
     }
-}
-@keyframes globe-pulse {
-  25% {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
   }
-  75% {
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
+  @keyframes globe-pulse {
+    25% {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
+    }
+    75% {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+    }
   }
-}  
 `;
 
 const СountriesBlock: React.FC = () => {
   const countries = useSelector(getFilteredCountries);
   const lang = useSelector(getLanguage);
+  const localization = useSelector(getHomePageLocalization);
   const requestStatus = useSelector(getRequestStatus);
   const dispatch = useDispatch();
 
-  const emptyCountries = <EmptyContent>
-        <div>
-          <img src='/images/globe.svg' alt='globe'/>
-        </div>
-        <p>No results were found for your search. Please repeat your request.</p>
-  </EmptyContent>;
+  const emptyCountries = (
+    <EmptyContent>
+      <div>
+        <img src="/images/globe.svg" alt="globe" />
+      </div>
+      <p>{localization.emptyCountriesContent}</p>
+    </EmptyContent>
+  );
 
   const countriesElements = countries.length
-      ? countries.map((el, index) => (
-          <div
-              key={el.id}
-              data-index={index}
-              style={{ backgroundImage: "url(" + el.imageUrl + ")" }}
-          >
-            <NavLink to={`/country/${el.id}`}>
-              <Country>{el.name}</Country>
-              <Capital>{el.capital}</Capital>
-            </NavLink>
-          </div>
+    ? countries.map((el, index) => (
+        <div key={el.id} data-index={index} style={{ backgroundImage: "url(" + el.imageUrl + ")" }}>
+          <NavLink to={`/country/${el.id}`}>
+            <Country>{el.name}</Country>
+            <Capital>{el.capital}</Capital>
+          </NavLink>
+        </div>
       ))
-      : emptyCountries;
+    : emptyCountries;
 
   useEffect(() => {
     dispatch(fetchCountriesData());
@@ -321,15 +321,11 @@ const СountriesBlock: React.FC = () => {
   return (
     <main>
       {requestStatus === "succeeded" ? (
-          countries.length > 0? (
-              <GridContainer>
-                {countriesElements}
-              </GridContainer>
-              ) : (
-                  <div>
-                    {countriesElements}
-                  </div>
-              )
+        countries.length > 0 ? (
+          <GridContainer>{countriesElements}</GridContainer>
+        ) : (
+          <div>{countriesElements}</div>
+        )
       ) : (
         <div className="loader-bg">
           <div className="loader"></div>

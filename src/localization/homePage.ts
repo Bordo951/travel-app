@@ -13,6 +13,7 @@ const en: HomePageLocalization = {
     " our application comes, allowing you to virtually go to almost any place in the world.",
   appTitle: "Open your eyes to online travel",
   searchDescription: "Let's start! Where do you want to go?",
+  emptyCountriesContent: "No results were found for your search. Please repeat your request.",
 };
 const ru: HomePageLocalization = {
   searchBtn: {
@@ -27,6 +28,7 @@ const ru: HomePageLocalization = {
     " позволяющее отправиться практически в любую точку мира.",
   appTitle: "Откройте глаза на онлайн-путешествия",
   searchDescription: "Давай начнем! Куда ты хочешь поехать?",
+  emptyCountriesContent: "По вашему запросу ничего не найдено. Пожалуйста, повторите свой запрос.",
 };
 const de: HomePageLocalization = {
   searchBtn: {
@@ -41,6 +43,8 @@ const de: HomePageLocalization = {
     " ist unsere Anwendung verfügbar, mit der Sie praktisch an fast jeden Ort der Welt gehen können.",
   appTitle: "Öffne deine Augen für Online-Reisen ",
   searchDescription: "Lasst uns beginnen! Wohin willst du gehen?",
+  emptyCountriesContent:
+    "Es wurden keine Ergebnisse zu ihrer Suchanfrage gefunden. Bitte wiederholen Sie Ihre Anfrage.",
 };
 
 export const homePage = { en, ru, de };

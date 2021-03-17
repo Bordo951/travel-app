@@ -44,6 +44,7 @@ export type HomePageLocalization = {
   searchDescription: string;
   appTitle: string;
   appDescription: string;
+  emptyCountriesContent: string;
 };
 
 export type HeaderLocalization = {

@@ -10,6 +10,7 @@ const VideoCountryInner = styled.div`
 `;
 
 const VideoOfCountry: React.FC = () => {
+  console.log(useSelector(getvideoUrl));
   const countryVideoId = useSelector(getvideoUrl)?.slice(32);
   return (
     <VideoCountryInner>

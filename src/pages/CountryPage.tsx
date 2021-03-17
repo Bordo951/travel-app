@@ -21,7 +21,7 @@ import "../css/preloader.css";
 
 const CountryPageIntro = styled.div<{ imageUrl: string | undefined }>`
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   background-size: cover;
   background: no-repeat center center;
   display: flex;

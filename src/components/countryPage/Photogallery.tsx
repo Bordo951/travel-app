@@ -76,6 +76,7 @@ const PhotoGalleryDescr = styled.p`
 `;
 
 const Button = styled.button`
+  margin-left: 3px;
   padding: 10px;
   margin-top: 10px;
   font-weight: 500;

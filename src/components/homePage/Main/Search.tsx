@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { filterCountries, getSearchQuery } from "../../../redux/countriesSlice";
 import { getHomePageLocalization } from "../../../redux/localizationSlice";
-
+import { animateScroll as scroll } from "react-scroll";
 const FormBox = styled.form`
   position: relative;
   width: 80%;
@@ -69,7 +69,7 @@ const FormBox = styled.form`
     width: 1px;
     overflow: hidden;
   }
-  
+
   @media (max-width: 992px) {
     width: 95%;
   }
@@ -83,9 +83,16 @@ const Search: React.FC = () => {
     event.preventDefault();
     dispatch(filterCountries(searchQuery));
   };
+  const countryPageElem = useRef<HTMLFormElement>(null);
+  const handleClick = () => {
+    if (countryPageElem.current) {
+      let h = countryPageElem.current.offsetTop - window.scrollY;
+      scroll.scrollMore(h - 10);
+    }
+  };
 
   return (
-    <FormBox onSubmit={(event) => handleSubmitEvent(event)} role="search">
+    <FormBox onSubmit={(event) => handleSubmitEvent(event)} role="search" ref={countryPageElem}>
       <label htmlFor="search"></label>
       <input
         id="search"
@@ -97,7 +104,9 @@ const Search: React.FC = () => {
         value={searchQuery}
         onChange={(e) => dispatch(filterCountries(e.target.value))}
       />
-      <button type="submit">{localization.searchBtn.text}</button>
+      <button onClick={() => handleClick()} type="submit">
+        {localization.searchBtn.text}
+      </button>
     </FormBox>
   );
 };

@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
         <Team />
       <Container>
         <LogoFooter />
-        <AboutCourse>&copy; 2021Q1 The Rolling Scopes School, {localization.copyright}</AboutCourse>
+        <AboutCourse className="copyright">&copy; 2021Q1 The Rolling Scopes School, {localization.copyright}</AboutCourse>
       </Container>
     </FooterWrapper>
   );

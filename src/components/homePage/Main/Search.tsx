@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { filterCountries, getSearchQuery } from "../../../redux/countriesSlice";
 import { getHomePageLocalization } from "../../../redux/localizationSlice";
 import { animateScroll as scroll } from "react-scroll";
+
 const FormBox = styled.form`
   position: relative;
   width: 80%;

@@ -17,6 +17,11 @@ export type CountryPageLocalization = {
     wind: string;
     windUnits: string;
   };
+  places: {
+    showVoters: string;
+    voters: string;
+    close: string;
+  };
   exchange: {
     USD: string;
     EUR: string;

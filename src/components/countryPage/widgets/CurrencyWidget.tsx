@@ -1,0 +1,98 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountryPageLocalization } from "../../../redux/localizationSlice";
+import {
+  getCurrency,
+  fetchExchangeData,
+  getExchangeData,
+  getErrorMessage,
+  getRequestStatus,
+} from "../../../redux/exchangeSlice";
+import styled from "styled-components";
+
+const Message = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+`;
+const CurrencyInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 700;
+`;
+const CurrencyInput = styled.input`
+  border: 1px solid #df5900;
+  border-radius: 4px;
+  padding: 2px;
+  width: 70px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+`;
+
+const CurrencyWidget: React.FC = () => {
+  const currency = useSelector(getCurrency);
+  const exchange = useSelector(getExchangeData);
+  let countryCurrency = exchange?.countryCurrency;
+  const status = useSelector(getRequestStatus);
+  const error = useSelector(getErrorMessage);
+  const localization = useSelector(getCountryPageLocalization);
+
+  const [inputCarrency, setInputCurrency] = useState<number | string>(1);
+  const [currencyUSD, setCurrencyUSD] = useState<number>(0);
+  const [currencyEUR, setCurrencyEUR] = useState<number>(0);
+  const [currencyRUB, setCurrencyRUB] = useState<number>(0);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchExchangeData());
+  }, [dispatch, currency]);
+  useEffect(() => {
+    setCurrencyUSD(exchange ? exchange.currencyInUSD : 0);
+    setCurrencyEUR(exchange ? exchange.currencyInEUR : 0);
+    setCurrencyRUB(exchange ? exchange.currencyInRUB : 0);
+  }, [exchange]);
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    let val = +(e.target as HTMLInputElement).value;
+    if (val > -1 && countryCurrency && exchange) {
+      val === 0 ? setInputCurrency("") : setInputCurrency(val);
+      if (val > 999999999999) return;
+      setCurrencyUSD(exchange.currencyInUSD * val);
+      setCurrencyEUR(exchange.currencyInEUR * val);
+      setCurrencyRUB(exchange.currencyInRUB * val);
+    }
+  };
+  return (
+    <div>
+      {status === "loading" && <Message>Loading...</Message>}
+      {status === "failed" && <Message>{error}</Message>}
+      {status === "succeeded" && exchange !== null && (
+        <CurrencyInner>
+          <div>
+            <div>
+              {(currency === "BYN" && localization.exchange.BYN) ||
+                (currency === "RUB" && localization.exchange.RUB) ||
+                (currency === "NOK" && localization.exchange.NOK) ||
+                (currency === "UAH" && localization.exchange.UAH) ||
+                (currency === "EUR" && localization.exchange.EUR) ||
+                (currency === "GBP" && localization.exchange.GBP) ||
+                (currency === "CZK" && localization.exchange.CZK)}
+            </div>
+            <CurrencyInput value={inputCarrency} type="number" onChange={(e) => handleInput(e)} />
+          </div>
+          <div>
+            <div>{`${localization.exchange.USD}: ${currencyUSD.toFixed(2)}`}</div>
+            <div>{`${localization.exchange.EUR}: ${currencyEUR.toFixed(2)}`}</div>
+            <div>{`${localization.exchange.RUB}: ${currencyRUB.toFixed(2)}`}</div>
+          </div>
+        </CurrencyInner>
+      )}
+    </div>
+  );
+};
+
+export default CurrencyWidget;

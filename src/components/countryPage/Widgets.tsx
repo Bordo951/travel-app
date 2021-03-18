@@ -27,12 +27,15 @@ const WidgetsShowBtn = styled.button`
   position: absolute;
   cursor: pointer;
   transition: color 0.2s ease;
-  color: #929292;
+  color: #D0D0D0;
   background-color: transparent;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:focus {
+    outline: 0;
+  }
   .fas {
     padding: 0;
     margin: 0;

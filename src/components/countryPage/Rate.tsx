@@ -38,3 +38,5 @@ export const Rate: FC<{ placeId: string; activeStars: number }> = (props) => {
     </Inner>
   );
 };
+
+export default Rate;

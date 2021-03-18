@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getPlaces } from "../../redux/countrySlice";
 import { getCountryPageLocalization } from "../../redux/localizationSlice";
+import VideoOfCountry from "./VideoCountry";
 
 const VotersOverlay = styled.div`
   position: fixed;
@@ -89,15 +90,17 @@ export const Voters: FC<PropsType> = ({ onClose, placeIndex }) => {
     <VotersOverlay>
       <VotersWrapper>
         <VotersTitle>{localization.places.voters}</VotersTitle>
-        {places &&
+        {places && places[placeIndex] &&
           places[placeIndex].rating?.map((el, i) => (
             <Voter key={i}>
               <VoterName>{el.username}</VoterName>
               <Stars activeStars={el.rate} />
             </Voter>
           ))}
-        <Button onClick={onClose}>{localization.places.close}</Button>
+        <Button className="close-voter-button" onClick={onClose}>{localization.places.close}</Button>
       </VotersWrapper>
     </VotersOverlay>
   );
 };
+
+export default Voters;

@@ -1,13 +1,13 @@
-/// <reference types="jest" />
 import React from 'react';
-import { configure } from 'enzyme';
+import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { shallow } from 'enzyme';
-configure({ adapter: new Adapter()});
+import {shallow} from 'enzyme';
+
+configure({adapter: new Adapter()});
 
 import Widgets from "../src/components/countryPage/Widgets";
 
-describe("<Widgets/> test", () =>{
+describe("<Widgets/> test", () => {
     it("All widgets are defined", () => {
         const result = shallow(<Widgets/>);
         const WeatherWidget = result.find("WeatherWidget");
